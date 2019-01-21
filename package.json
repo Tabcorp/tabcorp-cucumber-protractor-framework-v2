@@ -9,6 +9,7 @@
   },
   "scripts": {
     "prepublishOnly": "npm run compile",
+    "compile": "npm run clean && tsc -p .",
     "build": "npm run clean && tsc -p .",
     "watch": "tsc -w -p .",
     "test": "ts-mocha -p ./tsconfig.json ./src/unit/**/*.spec.ts --reporter mochawesome",
