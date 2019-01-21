@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": ["es2017", "dom", "dom.iterable", "scripthost"],
+    "moduleResolution": "node",
+    "inlineSourceMap": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["reflect-metadata", "mocha", "chai-spies"]
+  },
+  "filesGlob": [
+    "src/**/*",
+    "*.json",
+    "!node_modules/**",
+    "!dist/**"
+  ]
+}

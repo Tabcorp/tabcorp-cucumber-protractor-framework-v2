@@ -1,0 +1,44 @@
+{
+  "no-files-without-scenarios" : "on",
+  "no-unnamed-features": "on",
+  "no-unnamed-scenarios": "on",
+  "no-dupe-scenario-names": "off",
+  "no-dupe-feature-names": "on",
+  "no-partially-commented-tag-lines": "on",
+  "indentation": [
+    "on", {
+      "Feature": 0,
+      "Background": 2,
+      "Scenario": 2,
+      "Step": 4,
+      "Examples": 4,
+      "example": 6,
+      "given": 4,
+      "when": 4,
+      "then": 4,
+      "and": 6,
+      "but": 6,
+      "feature tag": 0,
+      "scenario tag": 2
+    }
+  ],
+  "no-trailing-spaces": "on",
+  "new-line-at-eof": ["on", "yes"],
+  "no-multiple-empty-lines": "on",
+  "no-empty-file": "on",
+  "no-scenario-outlines-without-examples": "on",
+  "name-length": ["on", {"Feature": 50, "Scenario": 100, "Step": 450}],
+  "no-restricted-tags": ["on", {"tags": ["@watch", "@wip"]}],
+  "use-and": "on",
+  "no-duplicate-tags": "on",
+  "no-superfluous-tags": "on",
+  "no-homogenous-tags": "off",
+  "one-space-between-tags": "on",
+  "no-unused-variables": "on",
+  "no-background-only-scenario": "off",
+  "no-empty-background": "on",
+
+  "unique-given-when-then-per-scenario": "on",
+  "given-when-then-order": "on",
+  "no-then-in-background": "on"
+}
