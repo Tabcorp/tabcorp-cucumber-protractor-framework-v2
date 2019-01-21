@@ -1,0 +1,57 @@
+{
+  "id": "protractor",
+  "displayName": "Protractor",
+  "source": "../src/**/*.ts",
+  "dist": "../../",
+  "reports": "reports/",
+  "typingsSource": [
+    "typings/**/*.d.ts",
+    "custom_typings/**/*.d.ts"
+  ],
+  "features": "../../e2e/**/*.feature",
+  "cucumberRequire": [
+    "../../node_modules/tabcorp-cucumber-protractor-framework-v2/dist/src/e2e/step-definitions/**/*.js",
+    "../step-definitions/**/*.js",
+    "../support/**/**/*.js",
+    "../support/**/*.js",
+    "../support/*.js"
+  ],
+  "report": [
+    "json:../{project}/e2e/reports/json/cucumber-report.json"
+  ],
+  "tags": [
+    "~@ignore", "@cam"
+  ],
+  "baseUrl": "http://localhost:3000",
+
+  "testsConfigurationVariables": {
+    "allScriptsTimeout": 50000,
+    "required": {
+      "retry": {
+        "default": {
+          "attempt": 3,
+          "delay": 150
+        },
+        "expectedNotFound": {
+          "attempt": 2,
+          "delay": 25
+        }
+      },
+      "afterClickWaitDelay": 50,
+      "relativePaths": {
+        "urls": "./e2e/mappings/pages/pages",
+        "elements": "./e2e/mappings/pages/",
+        "scripts": "/scripts/"
+      },
+      "disableTransitions": true,
+      "defaultStartPage": "home",
+      "isAngularApp": true,
+      "isAngular2App": true,
+      "animationClasses": [".spinner-circular", ".spinner-path", ".success-tick", ".success", ".fadeScaleDown", ".fadeScaleDown .fa-inverse", ".fail-cross", ".fail", ".fadeScaleShake", ".fadeScaleShake .fa-inverse"]
+    },
+    "custom": {
+      "loginPromptCheckUpDelay": 5,
+      "logginLevel":"error"
+    }
+  }
+}
