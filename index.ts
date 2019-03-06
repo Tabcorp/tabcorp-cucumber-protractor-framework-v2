@@ -22,3 +22,8 @@ export {BrowserWait} from "./src/e2e/support/framework-helpers/implementations/b
 export {PageHelper} from "./src/e2e/support/framework-helpers/implementations/page-helper";
 export {FileUtility} from "./src/e2e/support/framework-helpers/implementations/file-utility";
 export {RequiredConfig} from "./src/e2e/support/framework-helpers/implementations/required-config";
+export {TimeUtility} from "./src/e2e/support/framework-helpers/implementations/time-utility-helper";
+export {ScriptHelper} from "./src/e2e/support/steps-helpers/script-helper";
+export {StringGeneratorHelper} from "./src/e2e/support/steps-helpers/string-generator-helper";
+export {IPageUrlsMap} from "./src/e2e/support/framework-helpers/interfaces/page-url-interfaces";
+export {IElementDefinitionMap} from "./src/e2e/support/framework-helpers/interfaces/web-element-interfaces";
