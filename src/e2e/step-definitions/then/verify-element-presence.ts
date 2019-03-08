@@ -41,7 +41,7 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element$/, 
   expect(elements.length).to.gt(0);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([0-9]+)" "([^"]*)" elements$/, async (mainElementPosition: string, mainElementName: string, expectedCount: string, subElementName: string) => {
+Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)$/, async (mainElementPosition: string, mainElementName: string, expectedCount: string, subElementName: string) => {
   const index: number = parseInt(mainElementPosition.replace(/^\D+/g, ''), 10) - 1;
   const elements: ElementFinder[] = await elementHelper().getAllElementsInElementByCss(mainElementName, subElementName, index);
   expect(elements.length).to.equal(parseInt(expectedCount));

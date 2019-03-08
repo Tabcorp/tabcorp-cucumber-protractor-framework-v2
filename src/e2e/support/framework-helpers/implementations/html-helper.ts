@@ -105,8 +105,25 @@ export class HtmlHelper {
     return webElement != null && await webElement.isDisplayed();
   }
 
+  public async areNElementDisplayed(webElements: ElementFinder[], expectedCount: number, exactCount: boolean = false): Promise<boolean> {
+    let displayPromises = webElements.map(element => this.isElementDisplayed(element));
+    let displays: boolean[] = await Promise.all(displayPromises);
+    const visibleElements = displays.filter(display => display === true);
+    return exactCount ? visibleElements.length >= expectedCount : visibleElements.length === expectedCount;
+  }
+
+  public async areAllElementDisplayed(webElements: ElementFinder[]): Promise<boolean> {
+    let displayPromises = webElements.map(element => this.isElementDisplayed(element));
+    let displays: boolean[] = await Promise.all(displayPromises);
+    return displays.every(display => display === true);
+  }
+
   public async isElementEnabled(webElement: ElementFinder): Promise<boolean> {
     return webElement != null && await webElement.isEnabled();
+  }
+
+  public async isElementSelected(webElement: ElementFinder): Promise<boolean> {
+    return webElement != null && await webElement.isSelected();
   }
 
   public async getAttribute(webElement: ElementFinder, attributeName: string): Promise<string> {

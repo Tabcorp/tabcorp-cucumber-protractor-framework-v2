@@ -27,7 +27,8 @@ When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button) "([0-9])"
     await htmlHelper().clickElement(element);
   }
 });
-When(/^I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button) "([0-9])" times?$/, async (elementName: string, selectorModifiers: string, clickCount: number) => {
+
+When(/^I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button) "([0-9]+)" times?$/, async (elementName: string, selectorModifiers: string, clickCount: number) => {
   let element: ElementFinder = null;
   const params: string[] = selectorModifiers.split(',');
   element = await elementHelper().getElementByCss(elementName, 0, true, params);
@@ -81,8 +82,13 @@ When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|elemen
 // });
 
 When(/^I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, async (subElementName: string, mainElementPosition: string, mainElementName: string) => {
-  const index = parseInt(mainElementPosition, 10) - 1;
-  const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, null, true, index);
+  const mainIndex = parseInt(mainElementPosition, 10) - 1;
+  const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, 0, true, mainIndex);
+  await htmlHelper().clickElement(element);
+});
+
+When(/^I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)"$/, async (subElementName: string, mainElementName: string) => {
+  const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, 0, true, 0);
   await htmlHelper().clickElement(element);
 });
 
