@@ -25,7 +25,7 @@ When(/^I fill in the "([^"]*)" input with a random valid email address$/, async 
 // update to make sure the field DOES NOT start with a digit (would also somehow match next step)
 When(/I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, async (subElementName: string, inputValue: string, mainElementPosition: string, mainElementName: string) => {
   const mainIndex = parseInt(mainElementPosition, 10) - 1;
-  const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, null, true, mainIndex);
+  const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, 0, true, mainIndex);
   await htmlHelper().inputValue(element, inputValue);
 });
 

@@ -24,3 +24,28 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio bu
   expect(isEnabled).to.equal(!negate);
 });
 
+Then(/^the "([^"]*)" (?:checkbox|radio button) should( not)? be selected$/, async (elementName: string, negate: boolean) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  const isSelected: boolean = await htmlHelper().isElementSelected(element);
+  expect(isSelected).to.equal(!negate);
+});
+
+Then(/^the "([^"]*)" (?:checkbox|radio button) within the "([^"]*)" should( not)? be selected$/, async (subElementName: string, mainElementName: string, negate: boolean) => {
+  const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, 0, !negate);
+  const isSelected: boolean = await htmlHelper().isElementSelected(element);
+  expect(isSelected).to.equal(!negate);
+});
+
+Then(/^the "([^"]*)" for specific "([^"]*)" (?:checkbox|radio button) should( not)? be selected$/, async (elementName: string, selectorModifiers: string, negate: boolean) => {
+  const params: string[] = selectorModifiers.split(',');
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, 0, !negate, params);
+  const isPresent: boolean = await htmlHelper().isElementSelected(element);
+  expect(isPresent).to.equal(!negate);
+});
+
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:checkbox|radio button) should( not)? be selected$/, async (elementIndex: string, elementName: string, negate: boolean) => {
+  const index: number = parseInt(elementIndex.replace(/^\D+/g, ''), 10) - 1;
+  const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index, !negate);
+  const isPresent: boolean = await htmlHelper().isElementSelected(element);
+  expect(isPresent).to.equal(!negate);
+});

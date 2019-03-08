@@ -87,6 +87,15 @@ Then(/^the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, 
       ? expect(elementAttribute).not.to.include(attribute)
       : expect(elementAttribute).to.include(attribute);
 });
+
+Then(/^the "([^"]*)" (does not )?contains? the "([^"]*)" attribute$/, async (elementName: string, negate: string, attributeType: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
+  negate
+    ? expect(elementAttribute).to.be.null
+    : expect(elementAttribute).not.to.be.null;
+});
+
 Then(/^the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementName: string, selectorModifiers: string, negate: string, attributeType: string, attribute: string) => {
   let element: ElementFinder = null;
   const params: string[] = selectorModifiers.split(',');
