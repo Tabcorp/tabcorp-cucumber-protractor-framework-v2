@@ -5,6 +5,6 @@ steps:
   - name: ":cucumber: snyk test"
     command: scripts/buildkite-deploy-pr.sh
     agents:
-      queue: ${QUEUE}
+      queue: keno-web-auto
 EOM
 fi

@@ -63,7 +63,6 @@
     "multiple-cucumber-html-reporter": "^1.10.2",
     "protractor": "^6.0.0",
     "protractor-cucumber-framework": "^6.1.1",
-    "protractor-hotkeys": "0.0.5",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.7.1",
     "puppeteer": "^1.9.0",
     "reflect-metadata": "^0.1.12",
