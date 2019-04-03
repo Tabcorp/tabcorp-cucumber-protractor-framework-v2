@@ -61,7 +61,7 @@
     "mocha-teamcity-reporter": "^2.5.0",
     "mochawesome": "^3.0.3",
     "multiple-cucumber-html-reporter": "^1.10.2",
-    "protractor": "^6.0.0",
+    "protractor": "^5.4.2",
     "protractor-cucumber-framework": "^6.1.1",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.7.1",
     "puppeteer": "^1.9.0",
@@ -72,5 +72,8 @@
     "ts-node": "^7.0.1",
     "typescript": "^3.1.0",
     "webdriver-manager": "^12.1.0"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }
