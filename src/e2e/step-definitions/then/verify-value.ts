@@ -130,10 +130,10 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" att
 });
 
 /* ---- contains / equal the value ---- */
-Then(/^the "([^"]*)" input should equal the value "([^"]*)"$/, async (elementName: string) => {
+Then(/^the "([^"]*)" input should equal the value "([^"]*)"$/, async (elementName: string, elementValue: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementAttribute = await htmlHelper().getAttribute(element, 'value');
-  expect(elementAttribute).to.equals(elementAttribute);
+  expect(elementAttribute).to.equals(elementValue);
 });
 
 Then(/^the "([^"]*)" contains the value "([^"]*)"$/, async (elementName: string, elementValue: string) => {
