@@ -116,15 +116,15 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" 
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
   const index = parseInt(elementIndex, 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  expect(element).to.include(attribute);
+  expect(element).to.include(attributeType);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
-  expect(elementAttribute).not.to.include(attribute);
+  expect(elementAttribute).to.include(attribute);
 });
 
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
   const index = parseInt(elementIndex, 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  expect(element).to.include(attribute);
+  expect(element).to.include(attributeType);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
   expect(elementAttribute).not.to.include(attribute);
 });
@@ -142,4 +142,9 @@ Then(/^the "([^"]*)" contains the value "([^"]*)"$/, async (elementName: string,
   expect(elementAttribute).to.include(elementValue);
 });
 
-
+Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element contains the "([^"]*)" attribute "([^"]*)"$/, async (subelement: string, parentElementIndex: string, mainElementName: string, attributeType: string, attribute: string) => {
+  const index = parseInt(parentElementIndex, 10) - 1;
+  let element = await elementHelper().getElementInElementByCss(mainElementName, subelement, 0,true,index);
+  const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
+  expect(elementAttribute).to.include(attribute);
+  });
