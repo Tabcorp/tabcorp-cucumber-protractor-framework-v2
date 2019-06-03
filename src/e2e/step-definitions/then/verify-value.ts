@@ -142,6 +142,7 @@ Then(/^the "([^"]*)" contains the value "([^"]*)"$/, async (elementName: string,
   expect(elementAttribute).to.include(elementValue);
 });
 
+/* verify the attribute value of an element within another element */
 Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element contains the "([^"]*)" attribute "([^"]*)"$/, async (subelement: string, parentElementIndex: string, mainElementName: string, attributeType: string, attribute: string) => {
   const index = parseInt(parentElementIndex, 10) - 1;
   let element = await elementHelper().getElementInElementByCss(mainElementName, subelement, 0,true,index);
