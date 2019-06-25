@@ -23,6 +23,7 @@ const BASETYPES = {
 // # Functionality related base helpers
   // classes
   StringGeneratorHelper: Symbol.for("StringGeneratorHelper"),
+  StringManipulationHelper: Symbol.for("StringManipulationHelper"),
   // interfaces requiring custom implementation
   DialogInteractionHelper: Symbol.for("IDialogInteractionHelper"),
   JurisdictionHelper: Symbol.for("IJurisdictionHelper"),

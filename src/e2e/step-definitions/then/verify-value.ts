@@ -3,49 +3,57 @@ import { ElementFinder } from 'protractor';
 import { Then } from 'cucumber';
 import { WebElementHelper } from '../../support/framework-helpers/implementations/web-element-helper';
 import { HtmlHelper } from '../../support/framework-helpers/implementations/html-helper';
+import { StringManipulationHelper } from '../../support/steps-helpers/string-manipulation-helper';
 import { RegistrationIoC } from '../../IoC/registration-ioc';
 import { BASETYPES } from '../../IoC/base-types';
 
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
+const stringManipulationHelper = (): StringManipulationHelper => RegistrationIoC.getContainer().get<StringManipulationHelper>(BASETYPES.StringManipulationHelper);
 
 /* ---- contains the text / doesn not contain the text / contains no text ---- */
 Then(/^the "([^"]*)" contains no text$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementText = await htmlHelper().getElementText(element);
-  expect(elementText).equals('');
+  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+  expect(currentElementText).equals('');
 });
 
 Then(/^the "([^"]*)" does not contain the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementText = await htmlHelper().getElementText(element);
-  expect(elementText).to.not.include(expectedElementText);
+  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+  expect(currentElementText).to.not.include(expectedElementText);
 });
 
 Then(/^the "([^"]*)" contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementText = await htmlHelper().getElementText(element);
-  expect(elementText).to.include(expectedElementText);
+  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+  expect(currentElementText).to.include(expectedElementText);
 });
 Then(/^the "([^"]*)" for specific "([^"]*)" contains the text "([^"]*)"$/, async (elementName: string, selectorModifiers: string, expectedElementText: string) => {
   const params: string[] = selectorModifiers.split(',');
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, 0, true, params);
   const elementText = await htmlHelper().getElementText(element);
-  expect(elementText).to.include(expectedElementText);
+  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+  expect(currentElementText).to.include(expectedElementText);
 });
 
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
   let index: number = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
   const elementText = await htmlHelper().getElementText(element);
-  expect(elementText).to.include(expectedElementText);
+  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+  expect(currentElementText).to.include(expectedElementText);
 });
 
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"$/, async (elementIndex: string, elementName: string, expectedElementText: string) => {
   let index: number = parseInt(elementIndex.replace(/^\D+/g, ''), 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
   const elementText = await htmlHelper().getElementText(element);
-  expect(elementText).to.not.include(expectedElementText);
+  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+  expect(currentElementText).to.not.include(expectedElementText);
 });
 
 Then(/^the "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, async (elementName: string, attributeType: string, attribute: string) => {

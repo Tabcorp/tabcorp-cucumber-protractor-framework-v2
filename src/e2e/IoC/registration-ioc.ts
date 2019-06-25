@@ -6,6 +6,7 @@ import { PageHelper } from '../support/framework-helpers/implementations/page-he
 import { TimeUtility } from '../support/framework-helpers/implementations/time-utility-helper';
 import { WebElementHelper } from '../support/framework-helpers/implementations/web-element-helper';
 import { StringGeneratorHelper } from '../support/steps-helpers/string-generator-helper';
+import { StringManipulationHelper } from '../support/steps-helpers/string-manipulation-helper';
 import { ProtractorExpectedConditions, Ptor } from 'protractor';
 import { RequiredConfig } from '../support/framework-helpers/implementations/required-config';
 import { IRequiredConfig } from '../support/framework-helpers/interfaces/required-config';
@@ -64,6 +65,7 @@ export class RegistrationIoC {
     // Fonctionalities related classes
     RegistrationIoC.getContainerSingleton().bind<ScriptHelper>(BASETYPES.ScriptHelper).to(ScriptHelper);
     RegistrationIoC.getContainerSingleton().bind<StringGeneratorHelper>(BASETYPES.StringGeneratorHelper).to(StringGeneratorHelper);
+    RegistrationIoC.getContainerSingleton().bind<StringManipulationHelper>(BASETYPES.StringManipulationHelper).to(StringManipulationHelper);
   }
 
   public static getContainer(): Container {
