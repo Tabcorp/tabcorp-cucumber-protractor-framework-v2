@@ -15,8 +15,7 @@ const stringManipulationHelper = (): StringManipulationHelper => RegistrationIoC
 Then(/^the "([^"]*)" contains no text$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementText = await htmlHelper().getElementText(element);
-  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).equals('');
+  expect(elementText).equals('');
 });
 
 Then(/^the "([^"]*)" does not contain the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
