@@ -102,7 +102,7 @@ export class HtmlHelper {
   }
 
   public async isElementDisplayed(webElement: ElementFinder): Promise<boolean> {
-    return webElement != null && await webElement.isDisplayed();
+    return this.browserWait.waitFor(() => webElement && webElement.isDisplayed());
   }
 
   public async areNElementDisplayed(webElements: ElementFinder[], expectedCount: number, exactCount: boolean = false): Promise<boolean> {
