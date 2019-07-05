@@ -120,12 +120,14 @@ export class BrowserWait {
 
     const startDate = new Date();
     function run() {
-      return callback().then(() => Promise.resolve(true), async (err) => {
+      return callback().then((value) => {
+        return Promise.resolve(value)
+      }, async (err) => {
         const runtime = new Date().getTime() - startDate.getTime();
         if (runtime >= timeout) {
-          Promise.resolve(false);
+          return Promise.resolve(false);
         } else {
-          console.log('Retrying...');
+          console.log('##### ELEMENT NOT FOUND. Retrying...');
           await sleep(wait);
           return run();
         }
