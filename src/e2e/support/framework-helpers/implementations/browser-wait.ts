@@ -43,10 +43,10 @@ export class BrowserWait {
     }
   }
 
-  public async waitElementToBeClicked(element: ElementFinder): Promise<void> {
+  public async waitElementToBeClicked(element: ElementFinder): Promise<boolean> {
     await browser.wait(this.until.elementToBeClickable(element), browser.allScriptsTimeout,
                         this.logger.generateErrorMessage(`Element ${await this.logger.getIdentifierFromWebElement(element)} is not clickable`));
-    await element.click();
+    return this.waitFor(() => element.click());
     await this.timeUtility.doActionAfterDelay(() => {}, this.requiredConfig.afterClickWaitDelay);
   }
 
