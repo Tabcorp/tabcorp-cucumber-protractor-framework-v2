@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { TableDefinition, Then } from 'cucumber';
+import { browser, ElementFinder } from 'protractor';
 import { WebElementHelper } from '../../support/framework-helpers/implementations/web-element-helper';
 import { RegistrationIoC } from '../../IoC/registration-ioc';
 import { BASETYPES } from '../../IoC/base-types';
