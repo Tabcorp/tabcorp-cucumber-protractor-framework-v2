@@ -56,17 +56,30 @@ Then(/^I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-
   expect(isPresent).to.be.true;
 });
 
-/* ---- should be displayed / should not be displayed ---- */
 Then(/^the "([^"]*)" element should( not)? be displayed$/, async (elementName: string, negate: boolean) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
-  const isDisplayed: boolean = await htmlHelper().isElementDisplayed(element);
+  let isDisplayed: boolean;
+
+  if (negate) {
+    isDisplayed = await htmlHelper().isElementNotDisplayed(element);
+  } else {
+    isDisplayed = await htmlHelper().isElementDisplayed(element);
+  }
+
   expect(isDisplayed).to.equal(!negate);
 });
 
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed$/, async (elementIndex: string, elementName: string, negate: boolean) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
   let element = await elementHelper().getElementByCss(elementName, index);
-  const isDisplayed: boolean = await htmlHelper().isElementDisplayed(element);
+  let isDisplayed: boolean;
+
+  if (negate) {
+    isDisplayed = await htmlHelper().isElementNotDisplayed(element);
+  } else {
+    isDisplayed = await htmlHelper().isElementDisplayed(element);
+  }
+
   expect(isDisplayed).to.equal(!negate);
 });
 
