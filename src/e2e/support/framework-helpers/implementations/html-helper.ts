@@ -102,12 +102,12 @@ export class HtmlHelper {
   }
 
   public async isElementDisplayed(webElement: ElementFinder): Promise<boolean> {
-    await this.browserWait.waitElementToBeVisible(webElement);
+    // await this.browserWait.waitElementToBeVisible(webElement);
     return this.browserWait.waitFor(() => webElement.isDisplayed());
   }
 
   public async isElementNotDisplayed(webElement: ElementFinder): Promise<boolean> {
-    await this.browserWait.waitElementToNotBeVisible(webElement);
+    await this.browserWait.waitElementToNotBeVisible(webElement); // TODO: apply same solution as above?
     return this.browserWait.waitFor(() => webElement.isDisplayed());
   }
 
