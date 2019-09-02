@@ -43,10 +43,10 @@ export class BrowserWait {
     }
   }
 
-  public async waitElementToBeClicked(element: ElementFinder): Promise<void> {
+  public async waitElementToBeClicked(element: ElementFinder): Promise<boolean> {
     await browser.wait(this.until.elementToBeClickable(element), browser.allScriptsTimeout,
                         this.logger.generateErrorMessage(`Element ${await this.logger.getIdentifierFromWebElement(element)} is not clickable`));
-    await element.click();
+    return this.waitFor(() => element.click());
     await this.timeUtility.doActionAfterDelay(() => {}, this.requiredConfig.afterClickWaitDelay);
   }
 
@@ -112,6 +112,30 @@ export class BrowserWait {
       this.logger.generateErrorMessage(`Animation '${animation}' is still visible`));
     });
   }
+
+  public async waitFor(callback, {timeout = 20000, wait = 1000} = {}): Promise<boolean> {
+    const sleep = (ms) => {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    };
+
+    const startDate = new Date();
+    function run() {
+      return callback().then((value) => {
+        return Promise.resolve(value)
+      }, async (err) => {
+        const runtime = new Date().getTime() - startDate.getTime();
+        if (runtime >= timeout) {
+          return Promise.resolve(false);
+        } else {
+          console.log('##### ELEMENT NOT FOUND. Retrying...');
+          await sleep(wait);
+          return run();
+        }
+      });
+    }
+    return run();
+  }
+
 
   private clickElement(element: ElementFinder): Promise<boolean> {
 
