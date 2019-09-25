@@ -1,10 +1,11 @@
-import { ElementFinder } from 'protractor';
+import { ElementFinder, Key } from 'protractor';
 import { When } from 'cucumber';
 import { WebElementHelper } from '../support/framework-helpers/implementations/web-element-helper';
 import { HtmlHelper } from '../support/framework-helpers/implementations/html-helper';
 import { RegistrationIoC } from '../IoC/registration-ioc';
 import { BASETYPES } from '../IoC/base-types';
 import { StringGeneratorHelper } from '../support/steps-helpers/string-generator-helper';
+import { expect } from 'chai';
 
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
@@ -41,6 +42,7 @@ When(/I clear the field "([^"]*)"$/, async (elementName: string) => {
   await htmlHelper().clearElement(element);
 });
 
+//dropdown options
 When(/I select the option starting with "([^"]*)" from the "([^"]*)" (?:element|field|dropdown)$/, async (value: string, elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   //await htmlHelper().clickElement(element);
@@ -57,4 +59,41 @@ When(/I select the "([^"]*)" as "([^"]*)"$/, async (elementName: string, optionT
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   //await htmlHelper().clickElement(element);
   await htmlHelper().selectStartingWithValue(element, optionText);
+});
+
+When(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
+  let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
+  const element = await elementHelper().getElementByCss(elementName);
+  const options = await elementHelper().getAllElementsByTagName('option', element);
+  const elementText = await options[index].getText();
+  expect(elementText).to.include(expectedElementText);
+});
+
+When(/^the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
+  const element = await elementHelper().getElementByCss(elementName);
+  const options = await elementHelper().getAllElementsByTagName('option', element);
+  let index = options.length - 1;
+  const elementText = await options[index].getText();
+  expect(elementText).to.include(expectedElementText);
+});
+
+When(/^the "([^"]*)" (?:element|dropdown) contains a total of "([^"]*)" options$/, async (elementName: string, count: string) => {
+  let expectedOptionCount = parseInt(count, 10);
+  const element = await elementHelper().getElementByCss(elementName);
+  const options = await elementHelper().getAllElementsByTagName('option', element);
+  const optionCount = options.length;
+  expect(optionCount).to.equal(expectedOptionCount);
+});
+
+//input
+When(/^I fill in the "([^"]*)" input with "([^"]*)" in the "([^"]*)" form$/, async (elementName, inputValue, formName) => {
+  const element = await elementHelper().getElementByCss(elementName);
+  await htmlHelper().inputValue(element, inputValue);
+  element.sendKeys(Key.TAB);
+});
+
+When(/^the "([^"]*)" input field is empty$/, async (elementName) => {
+  const element = await elementHelper().getElementByCss(elementName);
+  const elementText = await htmlHelper().getElementText(element);
+  expect(elementText.length).to.equal(0);
 });

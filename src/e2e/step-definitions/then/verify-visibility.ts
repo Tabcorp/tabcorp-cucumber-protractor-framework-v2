@@ -56,6 +56,30 @@ Then(/^I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-
   expect(isPresent).to.be.true;
 });
 
+Then(/^I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|element|elements) displayed$/, async (elementCount, elementName) => {
+  var numberOfVisibleElements = 0;
+  const count = (elementCount == null || elementCount == 'the') ? 1 : parseInt(elementCount);
+  const elements = await elementHelper().getAllElementsByCss(elementName);
+  for (let i = 0; i < elements.length; i++) {
+    if (await htmlHelper().isElementDisplayed(elements[i])) {
+      numberOfVisibleElements++;
+    }
+  }
+  expect(numberOfVisibleElements).to.equal(count);
+});
+
+Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" displayed$/, async (expectedElementCount, subElementName, mainElementPosition, mainElementName) => {
+  var numberOfVisibleElements = 0;
+  const index = parseInt(mainElementPosition, 10) - 1;
+  const elements = await elementHelper().getAllElementsInElementByCss(mainElementName, subElementName, index);
+  for ( let i = 0; i < elements.length; i++) {
+    if (await htmlHelper().isElementDisplayed(elements[i])) {
+      numberOfVisibleElements++;
+    }
+  }
+  expect(numberOfVisibleElements).to.equals(parseInt(expectedElementCount));
+});
+
 /* ---- should be displayed / should not be displayed ---- */
 Then(/^the "([^"]*)" element should( not)? be displayed$/, async (elementName: string, negate: boolean) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
@@ -70,3 +94,9 @@ Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not
   expect(isDisplayed).to.equal(!negate);
 });
 
+Then(/^the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be displayed$/, async (elementName: string, selectorModifiers: string, negate: boolean) => {
+  const params: string[] = selectorModifiers.split(',');
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, 0, !negate, params);
+  const isDisplayed: boolean = await htmlHelper().isElementDisplayed(element);
+  expect(isDisplayed).to.equal(!negate);
+});

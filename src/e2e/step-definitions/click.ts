@@ -1,4 +1,4 @@
-import { ElementFinder } from 'protractor';
+import { ElementFinder, browser } from 'protractor';
 import { When } from 'cucumber';
 import { WebElementHelper } from '../support/framework-helpers/implementations/web-element-helper';
 import { HtmlHelper } from '../support/framework-helpers/implementations/html-helper';
@@ -130,3 +130,46 @@ When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|elemen
 //   await browserWait.waitNavigateToUrlFinished(expectedUrl);
 // });
 
+When(/^I click the "([^"]*)" (?:button|link|icon|element) in the "([^"]*)" (?:dialog|element|form)$/, async (elementName: string, dialogName: string) => {
+  let element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  let dialog: ElementFinder = await elementHelper().getElementByCss(dialogName);
+  await htmlHelper().clickElement(dialog);
+  await htmlHelper().clickElement(element);
+});
+
+// click visible element
+When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button) that is displayed$/, async (elementName) => {
+  let visibleElements = [];
+  const elements = await elementHelper().getAllElementsByCss(elementName);
+  for(var i=0;i<elements.length;i++) {
+    if(await elements[i].isDisplayed()) visibleElements.push(elements[i]);
+  }
+  await htmlHelper().clickElement(visibleElements[0]);
+});
+
+When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) that is displayed$/, async (elementPosition, elementName) => {
+  let visibleElements = [];
+  const index = parseInt(elementPosition, 10) - 1;
+  const elements = await elementHelper().getAllElementsByCss(elementName);
+  for(var i=0;i<elements.length;i++) {
+    if(await elements[i].isDisplayed()) visibleElements.push(elements[i]);
+  }
+  await htmlHelper().clickElement(visibleElements[index]);
+});
+
+// multiple times click
+When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times$/, async (elementIndex: string, elementName: string, elementCount: number) => {
+  const index = parseInt(elementIndex, 10) - 1;
+  let element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
+  for (let j = 0; j < elementCount; j++) {
+    await htmlHelper().clickElement(element);
+  }
+});
+
+When(/^I click the "([^"]*)" (?:button|link|icon|element) "([^"]*)" times$/, async (elementName: string, elementCount: number) => {
+  let element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  for (let j = 0; j < elementCount; j++) {
+    await htmlHelper().clickElement(element);
+    await browser.sleep(200);
+  }
+});

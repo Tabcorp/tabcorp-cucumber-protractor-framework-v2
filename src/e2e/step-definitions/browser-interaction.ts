@@ -58,6 +58,10 @@ When(/^I scroll down (\d+) within the "([^"]*)"$/, async (scrollAmount: string, 
   await htmlHelper().scrollElementToView(element);
 });
 
+When(/^I scroll up the page to position "([^"]*)"$/, async (position: number) => {
+  await browser.executeScript(`window.scrollTo(0, '${position}')`);
+});
+
 /* ---- TAB ---- */
 When(/^I switch to the "(new open|1st|2nd|3rd|[0-9]+th)" tab$/, async (tabToSwitchIndex: number) => {
   // new open = last tab in the browser
