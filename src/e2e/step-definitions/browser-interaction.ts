@@ -58,8 +58,9 @@ When(/^I scroll down (\d+) within the "([^"]*)"$/, async (scrollAmount: string, 
   await htmlHelper().scrollElementToView(element);
 });
 
-When(/^I scroll up the page to position "([^"]*)"$/, async (position: number) => {
-  await browser.executeScript(`window.scrollTo(0, '${position}')`);
+When(/^I scroll to the "([^"]*)" element$/, async (elementName: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  await browser.actions().mouseMove(element).perform();
 });
 
 /* ---- TAB ---- */
