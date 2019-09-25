@@ -18,6 +18,8 @@ export {IElementDefinition} from "./src/e2e/support/framework-helpers/interfaces
 export {LogginLevel, ILog} from "./src/e2e/support/framework-helpers/interfaces/loggin-interfaces";
 export {WebElementHelper} from "./src/e2e/support/framework-helpers/implementations/web-element-helper";
 export {HtmlHelper} from "./src/e2e/support/framework-helpers/implementations/html-helper";
+export {DropdownHelper} from "./src/e2e/support/framework-helpers/implementations/dropdown-helper";
+export {MomentHelper} from "./src/e2e/support/framework-helpers/implementations/moment-helper";
 export {BrowserWait} from "./src/e2e/support/framework-helpers/implementations/browser-wait";
 export {PageHelper} from "./src/e2e/support/framework-helpers/implementations/page-helper";
 export {FileUtility} from "./src/e2e/support/framework-helpers/implementations/file-utility";

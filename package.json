@@ -1,6 +1,6 @@
 {
   "name": "tabcorp-cucumber-protractor-framework-v2",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "common cucumber steps written with protractor",
   "main": "dist/index.js",
   "typings": "dist/index",
@@ -60,6 +60,7 @@
     "mocha": "^5.2.0",
     "mocha-teamcity-reporter": "^2.5.0",
     "mochawesome": "^3.0.3",
+    "moment-timezone": "^0.5.25",
     "multiple-cucumber-html-reporter": "^1.10.2",
     "protractor": "^5.4.2",
     "protractor-cucumber-framework": "^6.1.1",

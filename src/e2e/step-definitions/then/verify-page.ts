@@ -32,3 +32,9 @@ Then(/^a new tab is open with the url containing "([^"]*)"$/, async (expectedUrl
   expect(currentUrl).contain(expectedUrl);
 });
 
+Then(/^a new tab will be opened with the url containing "([^"]*)"$/, async (expectedUrl) => {
+  const windowHandles = await browser.getAllWindowHandles();
+  await browser.switchTo().window(windowHandles[1]);
+  const currentUrl = await browser.getCurrentUrl();
+  expect(currentUrl).contain(expectedUrl);
+});

@@ -58,6 +58,11 @@ When(/^I scroll down (\d+) within the "([^"]*)"$/, async (scrollAmount: string, 
   await htmlHelper().scrollElementToView(element);
 });
 
+When(/^I scroll to the "([^"]*)" element$/, async (elementName: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  await browser.actions().mouseMove(element).perform();
+});
+
 /* ---- TAB ---- */
 When(/^I switch to the "(new open|1st|2nd|3rd|[0-9]+th)" tab$/, async (tabToSwitchIndex: number) => {
   // new open = last tab in the browser

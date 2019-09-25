@@ -2,6 +2,8 @@ import { Container } from 'inversify';
 import { BASETYPES } from './base-types';
 import { BrowserWait } from '../support/framework-helpers/implementations/browser-wait';
 import { HtmlHelper } from '../support/framework-helpers/implementations/html-helper';
+import { DropdownHelper } from '../support/framework-helpers/implementations/dropdown-helper';
+import { MomentHelper } from '../support/framework-helpers/implementations/moment-helper';
 import { PageHelper } from '../support/framework-helpers/implementations/page-helper';
 import { TimeUtility } from '../support/framework-helpers/implementations/time-utility-helper';
 import { WebElementHelper } from '../support/framework-helpers/implementations/web-element-helper';
@@ -57,6 +59,8 @@ export class RegistrationIoC {
     // Framework classes
     RegistrationIoC.getContainerSingleton().bind<BrowserWait>(BASETYPES.BrowserWait).to(BrowserWait);
     RegistrationIoC.getContainerSingleton().bind<HtmlHelper>(BASETYPES.HtmlHelper).to(HtmlHelper);
+    RegistrationIoC.getContainerSingleton().bind<DropdownHelper>(BASETYPES.DropdownHelper).to(DropdownHelper);
+    RegistrationIoC.getContainerSingleton().bind<MomentHelper>(BASETYPES.MomentHelper).to(MomentHelper);
     RegistrationIoC.getContainerSingleton().bind<PageHelper>(BASETYPES.PageHelper).to(PageHelper);
     RegistrationIoC.getContainerSingleton().bind<FileUtility>(BASETYPES.FileUtility).to(FileUtility);
     RegistrationIoC.getContainerSingleton().bind<TimeUtility>(BASETYPES.TimeUtility).to(TimeUtility);

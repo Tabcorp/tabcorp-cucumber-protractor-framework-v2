@@ -9,6 +9,8 @@ const BASETYPES = {
   RequiredConfig: Symbol.for("IRequiredConfig"),
   BrowserWait: Symbol.for("BrowserWait"),
   HtmlHelper: Symbol.for("HtmlHelper"),
+  DropdownHelper: Symbol.for("DropdownHelper"),
+  MomentHelper: Symbol.for("MomentHelper"),
   PageHelper: Symbol.for("PageHelper"),
   ScriptHelper: Symbol.for("ScriptHelper"),
   TimeUtility: Symbol.for("TimeUtility"),
