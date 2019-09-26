@@ -11,6 +11,7 @@ const BASETYPES = {
   HtmlHelper: Symbol.for("HtmlHelper"),
   DropdownHelper: Symbol.for("DropdownHelper"),
   MomentHelper: Symbol.for("MomentHelper"),
+  DataHelper: Symbol.for("DataHelper"),
   PageHelper: Symbol.for("PageHelper"),
   ScriptHelper: Symbol.for("ScriptHelper"),
   TimeUtility: Symbol.for("TimeUtility"),
