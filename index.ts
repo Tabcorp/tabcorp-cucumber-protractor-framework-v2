@@ -20,13 +20,13 @@ export {WebElementHelper} from "./src/e2e/support/framework-helpers/implementati
 export {HtmlHelper} from "./src/e2e/support/framework-helpers/implementations/html-helper";
 export {DropdownHelper} from "./src/e2e/support/framework-helpers/implementations/dropdown-helper";
 export {MomentHelper} from "./src/e2e/support/framework-helpers/implementations/moment-helper";
+export {DataHelper } from "./src/e2e/support/framework-helpers/implementations/data-helper";
 export {BrowserWait} from "./src/e2e/support/framework-helpers/implementations/browser-wait";
 export {PageHelper} from "./src/e2e/support/framework-helpers/implementations/page-helper";
 export {FileUtility} from "./src/e2e/support/framework-helpers/implementations/file-utility";
 export {RequiredConfig} from "./src/e2e/support/framework-helpers/implementations/required-config";
 export {TimeUtility} from "./src/e2e/support/framework-helpers/implementations/time-utility-helper";
 export {ScriptHelper} from "./src/e2e/support/steps-helpers/script-helper";
-export {DataHelper} from "./src/e2e/support/steps-helpers/data-helper";
 export {StringGeneratorHelper} from "./src/e2e/support/steps-helpers/string-generator-helper";
 export {StringManipulationHelper} from "./src/e2e/support/steps-helpers/string-manipulation-helper";
 export {IPageUrlsMap} from "./src/e2e/support/framework-helpers/interfaces/page-url-interfaces";
