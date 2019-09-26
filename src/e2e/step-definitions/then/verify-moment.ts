@@ -12,7 +12,6 @@ const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelp
 const momentHelper = (): MomentHelper => RegistrationIoC.getContainer().get<MomentHelper>(BASETYPES.MomentHelper);
 const dropdownHelper = (): DropdownHelper => RegistrationIoC.getContainer().get<DropdownHelper>(BASETYPES.DropdownHelper);
 
-// move to commom framework
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the time "([^"]*)"$/, async (elementPosition, elementName, expectedElementText) => {
   let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
   const element = await elementHelper().getElementByCss(elementName, index);
