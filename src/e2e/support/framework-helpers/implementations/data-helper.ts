@@ -1,3 +1,6 @@
+import { injectable } from 'inversify';
+
+@injectable()
 export class DataHelper {
   public getRandomString(length: number): string {
     let result: string = '';
