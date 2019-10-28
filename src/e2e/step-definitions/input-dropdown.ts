@@ -4,12 +4,12 @@ import { WebElementHelper } from '../support/framework-helpers/implementations/w
 import { HtmlHelper } from '../support/framework-helpers/implementations/html-helper';
 import { RegistrationIoC } from '../IoC/registration-ioc';
 import { BASETYPES } from '../IoC/base-types';
-import { StringGeneratorHelper } from '../support/steps-helpers/string-generator-helper';
 import { expect } from 'chai';
+import { DataHelper } from '../support/framework-helpers/implementations/data-helper';
 
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
-const stringGeneratorHelper = (): StringGeneratorHelper => RegistrationIoC.getContainer().get<StringGeneratorHelper>(BASETYPES.StringGeneratorHelper);
+const dataHelper = (): DataHelper => RegistrationIoC.getContainer().get<DataHelper>(BASETYPES.DataHelper);
 
 When(/^I fill in the "([^"]*)" input with "([^"]*)"$/, async (elementName: string, inputValue: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
@@ -18,7 +18,7 @@ When(/^I fill in the "([^"]*)" input with "([^"]*)"$/, async (elementName: strin
 
 When(/^I fill in the "([^"]*)" input with a random valid email address$/, async (elementName: string) => {
   let emailAddress: string;
-  emailAddress = stringGeneratorHelper().getRandomEmailAddress(30);
+  emailAddress = dataHelper().getRandomEmailAddress();
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   await htmlHelper().inputValue(element, emailAddress);
 });

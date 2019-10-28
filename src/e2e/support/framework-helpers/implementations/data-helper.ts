@@ -1,15 +1,18 @@
 import { injectable } from 'inversify';
+var faker = require('faker');
 
 @injectable()
 export class DataHelper {
-  public getRandomString(length: number): string {
-    let result: string = '';
-    const characters = 'abcdefghijklmnopqrstuvwxyz';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
+  public getRandomFirstName(): string {
+    return faker.name.firstName();
+  }
+
+  public getRandomLastName(): string {
+    return faker.name.lastName();
+  }
+
+  public getRandomEmailAddress(): string {
+    return faker.internet.email();
   }
 
   public getPostcodeByState(state: string): string {
