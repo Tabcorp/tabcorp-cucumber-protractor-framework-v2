@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { faker} from 'faker';
+import * as faker from 'faker';
 
 @injectable()
 export class DataHelper {
