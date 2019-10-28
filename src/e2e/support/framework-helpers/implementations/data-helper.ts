@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-var faker = require('faker');
+import { faker} from 'faker';
 
 @injectable()
 export class DataHelper {
