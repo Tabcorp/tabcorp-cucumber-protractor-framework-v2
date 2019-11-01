@@ -5,6 +5,7 @@ import { TimeUtility } from './time-utility-helper';
 import { injectable, inject } from "inversify";
 import { BASETYPES } from '../../../IoC/base-types';
 import { IRequiredConfig } from '../interfaces/required-config';
+import { RetryHelper } from '../../steps-helpers/retry-helper'
 
 @injectable()
 export class BrowserWait {
@@ -12,15 +13,18 @@ export class BrowserWait {
   private readonly logger: ILogger;
   private readonly until: ProtractorExpectedConditions;
   private readonly timeUtility: TimeUtility;
+  private readonly retryHelper: RetryHelper;
   private readonly requiredConfig: IRequiredConfig;
 
   constructor(@inject(BASETYPES.ComponentsWait) componentWaiter: IComponentsWait,
               @inject(BASETYPES.Logger) logger: ILogger,
               @inject(BASETYPES.ProtractExpectedConds) until: ProtractorExpectedConditions,
               @inject(BASETYPES.TimeUtility) timeUtility: TimeUtility,
+              @inject(BASETYPES.RetryHelper) retryHelper: RetryHelper,
               @inject(BASETYPES.RequiredConfig) requiredConfig: IRequiredConfig) {
     this.componentWaiter = componentWaiter;
     this.logger = logger;
+    this.retryHelper = retryHelper;
     this.until = until;
     this.timeUtility = timeUtility;
     this.requiredConfig = requiredConfig;
@@ -46,7 +50,7 @@ export class BrowserWait {
   public async waitElementToBeClicked(element: ElementFinder): Promise<void> {
     await browser.wait(this.until.elementToBeClickable(element), browser.allScriptsTimeout,
                         this.logger.generateErrorMessage(`Element ${await this.logger.getIdentifierFromWebElement(element)} is not clickable`));
-    await element.click();
+    await this.retryHelper.waitFor(() => element.click());
     await this.timeUtility.doActionAfterDelay(() => {}, this.requiredConfig.afterClickWaitDelay);
   }
 

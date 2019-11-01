@@ -30,3 +30,4 @@ export {ScriptHelper} from "./src/e2e/support/steps-helpers/script-helper";
 export {StringManipulationHelper} from "./src/e2e/support/steps-helpers/string-manipulation-helper";
 export {IPageUrlsMap} from "./src/e2e/support/framework-helpers/interfaces/page-url-interfaces";
 export {IElementDefinitionMap} from "./src/e2e/support/framework-helpers/interfaces/web-element-interfaces";
+export {RetryHelper} from "./src/e2e/support/steps-helpers/retry-helper";

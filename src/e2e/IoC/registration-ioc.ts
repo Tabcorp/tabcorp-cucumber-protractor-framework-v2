@@ -11,6 +11,7 @@ import { WebElementHelper } from '../support/framework-helpers/implementations/w
 import { StringManipulationHelper } from '../support/steps-helpers/string-manipulation-helper';
 import { ProtractorExpectedConditions, Ptor } from 'protractor';
 import { RequiredConfig } from '../support/framework-helpers/implementations/required-config';
+import { RetryHelper } from "../support/steps-helpers/retry-helper";
 import { IRequiredConfig } from '../support/framework-helpers/interfaces/required-config';
 import { ScriptHelper } from '../support/steps-helpers/script-helper';
 import { FileUtility } from '../support/framework-helpers/implementations/file-utility';
@@ -69,6 +70,7 @@ export class RegistrationIoC {
 
     // Fonctionalities related classes
     RegistrationIoC.getContainerSingleton().bind<ScriptHelper>(BASETYPES.ScriptHelper).to(ScriptHelper);
+    RegistrationIoC.getContainerSingleton().bind<RetryHelper>(BASETYPES.RetryHelper).to(RetryHelper);
     RegistrationIoC.getContainerSingleton().bind<StringManipulationHelper>(BASETYPES.StringManipulationHelper).to(StringManipulationHelper);
   }
 
