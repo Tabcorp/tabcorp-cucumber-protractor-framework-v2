@@ -1,0 +1,60 @@
+{
+  "id": "protractor",
+  "displayName": "Protractor",
+  "source": "../src/**/*.ts",
+  "dist": "../../",
+  "reports": "reports/",
+  "typingsSource": [
+    "typings/**/*.d.ts",
+    "custom_typings/**/*.d.ts"
+  ],
+  "features": "../../e2e_v2/**/*.feature",
+  "cucumberRequire": [
+    "../step-definitions/**/*.js",
+    "../support/**/**/*.js",
+    "../support/**/*.js",
+    "../support/*.js"
+  ],
+  "report": [
+    "node_modules/cucumber-pretty"
+  ],
+  "tags": [
+    "~@wip", "@smoke", "@desktop"
+  ],
+  "baseUrl": "http://localhost:3000",
+
+  "testsConfigurationVariables": {
+    "allScriptsTimeout": 120000,
+    "required": {
+      "retry": {
+        "default": {
+          "attempt": 10,
+          "delay": 150
+        },
+        "expectedNotFound": {
+          "attempt": 2,
+          "delay": 25
+        }
+      },
+      "afterClickWaitDelay": 50,
+      "relativePaths": {
+        "urls": "./e2e_v2/mappings/pages/pages",
+        "elements": "./e2e_v2/mappings/pages/",
+        "scripts": "/scripts/"
+      },
+      "disableTransitions": true,
+      "defaultStartPage": "home",
+      "isAngularApp": true,
+      "isAngular2App": true,
+      "animationClasses": [".spinner-circular", ".spinner-path", ".success-tick", ".success", ".fadeScaleDown", ".fadeScaleDown .fa-inverse", ".fail-cross", ".fail", ".fadeScaleShake", ".fadeScaleShake .fa-inverse"]
+    },
+    "custom": {
+      "urlsPath": "./e2e_v2/mappings/pages/pages",
+      "loginPromptCheckUpDelay": 5,
+      "logginLevel":"error",
+      "jurisdictions": "./e2e_v2/mappings/jurisdiction",
+      "mockServerURL" : "http://localhost:9003",
+      "jsonPayloadPath" : "./e2e_v2/mappings/json_payloads/"
+    }
+  }
+}

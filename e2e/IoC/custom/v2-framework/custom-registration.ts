@@ -1,0 +1,52 @@
+import { Container } from "inversify";
+
+import { BASETYPES } from "tabcorp-cucumber-protractor-framework-v2"
+import { IComponentsWait } from "tabcorp-cucumber-protractor-framework-v2";
+import { ICustomNavigationBehaviorHelper } from "tabcorp-cucumber-protractor-framework-v2";
+import { IWebElementLoader } from "tabcorp-cucumber-protractor-framework-v2";
+import { ILogger } from "tabcorp-cucumber-protractor-framework-v2";
+import { IJurisdictionHelper } from "tabcorp-cucumber-protractor-framework-v2";
+
+import { FormAngularComponentsWait } from "../../../support/framework-helpers/implementations/custom/v2-framework/angular-components-helper";
+import { FormWebElementLoader } from "../../../support/framework-helpers/implementations/custom/v2-framework/web-element-loader";
+import { FormLogger } from "../../../support/logger/custom/v2-framework/logger";
+import { FormJurisdictionHelper } from "../../../support/steps-helpers/custom/v2-framework/jurisdiction-helper";
+import { FakeDataHelper } from "../../../support/steps-helpers/custom/v2-framework/fake-data-helper";
+import { StoredElementDataHelper } from "../../../support/steps-helpers/custom/v2-framework/stored-element-data-helper";
+import { StringHelper } from "../../../support/steps-helpers/custom/v2-framework/string-helper";
+import { NumberHelper } from "../../../support/steps-helpers/custom/v2-framework/number-helper";
+import { PageURLHelper } from "../../../support/steps-helpers/custom/v2-framework/page-url-helper";
+import { RetryHelper } from "../../../support/steps-helpers/custom/v2-framework/retry_helper";
+import { FormCustomNavigationBehavior }  from "../../../support/framework-helpers/implementations/custom/v2-framework/custom-navigation-behavior-helper";
+
+import { ICustomConfig } from "../../../support/framework-helpers/interfaces/custom/custom-config";
+import { CUSTOMTYPES } from "./custom-types";
+
+
+export const BaseCustomImplementationRegistration = (container: Container, customConfig: ICustomConfig): void => {
+
+  // custom configuration - specific to Form
+  container.bind<ICustomConfig>(CUSTOMTYPES.CustomConfig).toConstantValue(customConfig);
+
+  // Framework classes
+  container.bind<IComponentsWait>(BASETYPES.ComponentsWait).to(FormAngularComponentsWait);
+  container.bind<ICustomNavigationBehaviorHelper>(BASETYPES.CustomNavigationBehaviorHelper).to(FormCustomNavigationBehavior).inSingletonScope();
+  container.bind<IWebElementLoader>(BASETYPES.WebElementLoader).to(FormWebElementLoader).inSingletonScope();
+  container.bind<ILogger>(BASETYPES.Logger).to(FormLogger);
+
+  // custom step helper
+  container.bind<IJurisdictionHelper>(BASETYPES.JurisdictionHelper).to(FormJurisdictionHelper);
+
+};
+
+export const CustomTypeRegistration = (container: Container) => {
+
+  container.bind<FakeDataHelper>(CUSTOMTYPES.FakeDataHelper).to(FakeDataHelper);
+  container.bind<StoredElementDataHelper>(CUSTOMTYPES.StoredElementDataHelper).to(StoredElementDataHelper);
+  container.bind<StringHelper>(CUSTOMTYPES.StringHelper).to(StringHelper);
+  container.bind<NumberHelper>(CUSTOMTYPES.NumberHelper).to(NumberHelper);
+  container.bind<PageURLHelper>(CUSTOMTYPES.PageURLHelper).to(PageURLHelper);
+  container.bind<RetryHelper>(CUSTOMTYPES.RetryHelper).to(RetryHelper);
+
+};
+

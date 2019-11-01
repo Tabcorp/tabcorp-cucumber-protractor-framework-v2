@@ -22,13 +22,13 @@
       "scenario tag": 2
     }
   ],
-  "no-trailing-spaces": "on",
+  "no-trailing-spaces": "off",
   "new-line-at-eof": ["on", "yes"],
   "no-multiple-empty-lines": "on",
   "no-empty-file": "on",
   "no-scenario-outlines-without-examples": "on",
-  "name-length": ["on", {"Feature": 50, "Scenario": 100, "Step": 450}],
-  "no-restricted-tags": ["on", {"tags": ["@watch", "@wip"]}],
+  "name-length": ["on", {"Feature": 150, "Scenario": 150, "Step": 450}],
+  "no-restricted-tags": ["on", {"tags": ["@watch"]}],
   "use-and": "on",
   "no-duplicate-tags": "on",
   "no-superfluous-tags": "on",
@@ -37,7 +37,6 @@
   "no-unused-variables": "on",
   "no-background-only-scenario": "off",
   "no-empty-background": "on",
-
   "unique-given-when-then-per-scenario": "on",
   "given-when-then-order": "on",
   "no-then-in-background": "on"

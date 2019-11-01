@@ -13,6 +13,7 @@
     "build": "npm run clean && tsc -p .",
     "watch": "tsc -w -p .",
     "test": "ts-mocha -p ./tsconfig.json ./src/unit/**/*.spec.ts --reporter mochawesome",
+    "e2e": "shx rm -rf dist reports && tsc && gherkin-lint . --rulesdir ./dist/features-rules && ./node_modules/protractor/bin/protractor ./dist/config/protractor.conf.js",
     "clean": "shx rm -rf dist"
   },
   "keywords": [
