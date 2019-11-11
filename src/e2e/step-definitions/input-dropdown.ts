@@ -61,30 +61,6 @@ When(/I select the "([^"]*)" as "([^"]*)"$/, async (elementName: string, optionT
   await htmlHelper().selectStartingWithValue(element, optionText);
 });
 
-When(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
-  let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
-  const element = await elementHelper().getElementByCss(elementName);
-  const options = await elementHelper().getAllElementsByTagName('option', element);
-  const elementText = await options[index].getText();
-  expect(elementText).to.include(expectedElementText);
-});
-
-When(/^the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
-  const element = await elementHelper().getElementByCss(elementName);
-  const options = await elementHelper().getAllElementsByTagName('option', element);
-  let index = options.length - 1;
-  const elementText = await options[index].getText();
-  expect(elementText).to.include(expectedElementText);
-});
-
-When(/^the "([^"]*)" (?:element|dropdown) contains a total of "([^"]*)" options$/, async (elementName: string, count: string) => {
-  let expectedOptionCount = parseInt(count, 10);
-  const element = await elementHelper().getElementByCss(elementName);
-  const options = await elementHelper().getAllElementsByTagName('option', element);
-  const optionCount = options.length;
-  expect(optionCount).to.equal(expectedOptionCount);
-});
-
 //input
 When(/^I fill in the "([^"]*)" input with "([^"]*)" in the "([^"]*)" form$/, async (elementName, inputValue, formName) => {
   const element = await elementHelper().getElementByCss(elementName);

@@ -11,4 +11,3 @@ Then(/^I am logged out$/, async () => {
   const isUserLoggedIn = await loginHelper().isUserLoggedIn();
   expect(isUserLoggedIn).to.be.false;
 });
-

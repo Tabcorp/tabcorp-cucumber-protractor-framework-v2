@@ -15,6 +15,7 @@ Then(/^I can see "([^"]*)" "([^"]*)" (?:buttons|links|icons|element|elements)$/,
   const elements: ElementFinder[] = await elementHelper().getAllElementsByCss(elementName);
   expect(elements.length).to.equal(count);
 });
+
 Then(/^I can see "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)$/, async (elementCount: string, elementName: string, selectorModifiers: string) => {
   const count: number = elementCount == null ? 1 : parseInt(elementCount);
   const params: string[] = selectorModifiers.split(',');
@@ -26,6 +27,7 @@ Then(/^I can see at least "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)$/, 
   const elements: ElementFinder[] = await elementHelper().getAllElementsByCss(elementName);
   expect(elements.length).to.gte(minElementCount);
 });
+
 Then(/^I can see at least "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)$/, async (minElementCount: number, elementName: string, selectorModifiers: string) => {
   const params: string[] = selectorModifiers.split(',');
   const elements: ElementFinder[] = await elementHelper().getAllElementsByCss(elementName, true, params);
@@ -36,6 +38,7 @@ Then(/^I can see more than "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)$/,
   const elements: ElementFinder[] =  await elementHelper().getAllElementsByCss(elementName);
   expect(elements.length).to.be.gt(expectedElementCount);
 });
+
 Then(/^I can see more than "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)$/, async (expectedElementCount: number, elementName: string, selectorModifiers: string) => {
   const params: string[] = selectorModifiers.split(',');
   const elements: ElementFinder[] =  await elementHelper().getAllElementsByCss(elementName, true, params);
