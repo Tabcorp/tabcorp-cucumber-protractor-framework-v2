@@ -20,14 +20,6 @@ Given(/^I am logged in with username "([^"]*)" and password "([^"]*)"$/, async (
   await loginHelper().enterLoginDetails(usernameValue, password);
 });
 
-When(/^I log in with username "([^"]*)" and password "([^"]*)"$/, async (usernameValue: string, password: string) => {
-  if (!await loginHelper().isLoginPromptPresent()) {
-    await loginHelper().bringUpLoginPrompt();
-  }
-
-  await loginHelper().enterLoginDetails(usernameValue, password);
-});
-
 When(/^I sign out$/, async () => {
   if (await loginHelper().isUserLoggedIn()) {
     await loginHelper().logout();

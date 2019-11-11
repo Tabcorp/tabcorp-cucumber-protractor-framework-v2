@@ -15,18 +15,21 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" ele
   const elements: ElementFinder[] = await elementHelper().getAllElementsInElementByCss(mainElementName, subElementName, index, false);
   expect(elements.length).to.equal(0);
 });
+
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" does not contain the "([^"]*)" element$/, async (mainElementPosition: string, mainElementName: string, mainElementSelectorModifiers: string, subElementName: string) => {
   const mainParams: string[] = mainElementSelectorModifiers.split(',');
   const index: number = parseInt(mainElementPosition.replace(/^\D+/g, ''), 10) - 1;
   const elements: ElementFinder[] = await elementHelper().getAllElementsInElementByCss(mainElementName, subElementName, index, false, mainParams);
   expect(elements.length).to.equal(0);
 });
+
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" for specific "([^"]*)" element$/, async (mainElementPosition: string, mainElementName: string, subElementName: string, subElementSelectorModifiers: string) => {
   const subParams: string[] = subElementSelectorModifiers.split(',');
   const index: number = parseInt(mainElementPosition.replace(/^\D+/g, ''), 10) - 1;
   const elements: ElementFinder[] = await elementHelper().getAllElementsInElementByCss(mainElementName, subElementName, index, false, null, subParams);
   expect(elements.length).to.equal(0);
 });
+
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" does not contain the "([^"]*)" for specific "([^"]*) element$/, async (mainElementPosition: string, mainElementName: string, mainElementSelectorModifiers: string, subElementName: string, subElementSelectorModifiers: string) => {
   const subParams: string[] = subElementSelectorModifiers.split(',');
   const mainParams: string[] = mainElementSelectorModifiers.split(',');
@@ -53,7 +56,6 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"$/, as
   expect(elements.length).to.equals(expectedSubElementsCount);
 });
 
-
 Then(/^the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element$/, async (mainElementName: string, mainElementText: string, subElementName: string) => {
   const mainElement = await elementHelper().getElementByCssContainingText(mainElementName, mainElementText);
   const elements: ElementFinder[] = await elementHelper().getAllElementsInWebElementByCss(mainElement, subElementName);
@@ -76,7 +78,7 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should(
 
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be present$/, async (elementIndex: string, elementName: string, negate: boolean) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''), 10) - 1;
-  const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index, !negate);
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index, !negate);
   const isPresent: boolean = await htmlHelper().isElementPresent(element);
   expect(isPresent).to.equal(!negate);
 });
@@ -86,5 +88,3 @@ Then(/^the "([^"]*)" element within the "([^"]*)" should( not)? be present$/, as
   const isPresent: boolean = await htmlHelper().isElementPresent(element);
   expect(isPresent).to.equal(!negate);
 });
-
-
