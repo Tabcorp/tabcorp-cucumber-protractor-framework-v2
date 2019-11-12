@@ -67,12 +67,6 @@ Then(/^the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, async (ele
   expect(isTextPresent).to.be.false;
 });
 
-// TODO : VERIFY REGEX => last parameters makes no sense
-// Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, async (elementIndex: string, elementName: string, expectedElementText: string) => {
-//   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''), 10) - 1;
-//   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-//   expect(element).to.include(expectedElementText);
-// });
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
   const index = parseInt(elementIndex, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
@@ -112,13 +106,6 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" 
     ? expect(elementAttribute).not.to.include(attribute)
     : expect(elementAttribute).to.include(attribute);
 });
-
-
-// Then(/^the "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"$/, async (elementName: string, attributeType: string, attribute: string) => {
-//   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
-//   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
-
-// });
 
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
   const index = parseInt(elementIndex, 10) - 1;
