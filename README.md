@@ -37,8 +37,18 @@ npm run test
 npm run clean
 ```
 
-### Get your project up and running:
+### Update tabcorp cucumber protractor framework npm package
 
+1.) Increase `version` under `package.json`
+
+2.) Get your dev branch code reviewd and merged to master
+
+3.) Get latest master locally and publish npm - ensure you have a npm account first
+
+    npm login
+    npm publish
+
+### Get your project up and running:
 
 1.) Install the tabcorp cucumber protractor framework v2 into your project
 
@@ -55,12 +65,10 @@ npm run clean
 4.) Run your cucumber-protractor tests as usual from your project repository (note example for a typescript project)
 
     ./node_modules/protractor/bin/protractor ./dist/config/protractor.conf.js
-    
-    
+
 ## Example Folder Structure
 
 ### Your Project:    
-
 
 /e2e
  * /config (contains your protractor.conf.ts and e2e.conf.json)
@@ -89,5 +97,4 @@ npm run clean
 
 
 # Cucumber steps available
-
-Coming Soon
+under `/src/e2e/step-definitions`
