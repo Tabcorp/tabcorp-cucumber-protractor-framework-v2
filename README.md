@@ -37,6 +37,17 @@ npm run test
 npm run clean
 ```
 
+### Update tabcorp cucumber protractor framework npm package
+
+1.) Increase `version` under `package.json`
+
+2.) Get your dev branch code reviewd and merged to master
+
+3.) Get latest master locally and publish npm - ensure you have a npm account first
+
+    npm login
+    npm publish
+
 ### Get your project up and running:
 
 

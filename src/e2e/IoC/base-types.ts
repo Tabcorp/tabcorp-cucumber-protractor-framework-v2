@@ -27,6 +27,7 @@ const BASETYPES = {
   // classes
   StringManipulationHelper: Symbol.for("StringManipulationHelper"),
   // interfaces requiring custom implementation
+  RetryHelper: Symbol.for("RetryHelper"),
   DialogInteractionHelper: Symbol.for("IDialogInteractionHelper"),
   JurisdictionHelper: Symbol.for("IJurisdictionHelper"),
   LoginProcessHelper: Symbol.for("ILoginProcessHelper")

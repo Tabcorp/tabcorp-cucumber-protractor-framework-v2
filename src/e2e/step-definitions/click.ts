@@ -8,11 +8,11 @@ import { BASETYPES } from '../IoC/base-types';
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
 
-
 When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button)$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   await htmlHelper().clickElement(element);
 });
+
 When(/^I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button)$/, async (elementName: string, selectorModifiers: string) => {
   let element: ElementFinder = null;
   const params: string[] = selectorModifiers.split(',');
@@ -42,17 +42,9 @@ When(/^I click the "([^"]*)" with the text "([^"]*)"$/, async (elementName: stri
   await htmlHelper().clickElement(element);
 });
 
-// TO REWRITE - MAKES NO SENSE
 When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, async (elementPosition: string, elementName: string) => {
   const index = parseInt(elementPosition, 10) - 1;
-  let element: ElementFinder = null;
-  if (elementName === "Fast Select Game" || elementName === "Clear Game") {
-    const params: string[] = [index.toString()];
-    element = await elementHelper().getElementByCss(elementName, null, true, params);
-  } else {
-    element = await elementHelper().getElementByCss(elementName, index);
-  }
-
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
   await htmlHelper().clickElement(element);
 });
 
