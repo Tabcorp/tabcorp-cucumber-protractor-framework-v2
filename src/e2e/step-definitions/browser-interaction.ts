@@ -24,11 +24,7 @@ When(/^I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, asy
   const elements = await elementHelper().getElementByCss(elementName, index);
   await htmlHelper().hoverOver(elements[index]);
 });
-/**
- * https://stackoverflow.com/questions/34562061/webdriver-click-vs-javascript-click
- * Step definitions such as the following will need to be used to click on elements
- * that the web driver can't.
- */
+
 When(/^I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element$/, async (x: string, y: string, elementPosition: string, elementName: string) => {
   const index = parseInt(elementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
