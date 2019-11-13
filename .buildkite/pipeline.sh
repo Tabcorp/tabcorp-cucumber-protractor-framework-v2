@@ -26,10 +26,10 @@ steps:
       queue: ${QUEUE}
       aws:instance-id: ${BUILDKITE_AGENT_META_DATA_AWS_INSTANCE_ID}
     env:
-      KENO_PLATFORM_TAG: "@desktop"
+      PLATFORM_TAG: "@desktop"
   - wait
   - name: ":cucumber: snyk test"
-    command: scripts/buildkite-snyk.sh
+    command: ./scripts/buildkite-snyk.sh
     agents:
       queue: ${QUEUE}
       aws:instance-id: ${BUILDKITE_AGENT_META_DATA_AWS_INSTANCE_ID}
