@@ -1,9 +1,9 @@
 import { browser } from 'protractor';
 import { injectable, inject } from "inversify";
 
-import { IComponentsWait } from 'IComponentsWait';
-import { BASETYPES } from 'BASETYPES';
-import { IRequiredConfig } from 'IRequiredConfig';
+import { IComponentsWait } from '../../../../../../src/e2e/support/framework-helpers/interfaces/component-wait';
+import { BASETYPES } from '../../../../../../src/e2e/IoC/base-types';
+import { IRequiredConfig } from '../../../../../../src/e2e/support/framework-helpers/interfaces/required-config';
 
 @injectable()
 export class FormAngularComponentsWait implements IComponentsWait {

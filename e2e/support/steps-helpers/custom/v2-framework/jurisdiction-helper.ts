@@ -7,7 +7,7 @@ import { HtmlHelper } from "../../../../../src/e2e/support/framework-helpers/imp
 import { BrowserWait } from "../../../../../src/e2e/support/framework-helpers/implementations/browser-wait";
 import { IJurisdictionHelper } from "../../../../../src/e2e/support/steps-helpers/interfaces/jurisdiction-helper";
 import { BASETYPES } from "../../../../../src/e2e/IoC/base-types";
-import { ICustomConfig } from "../../../framework-helpers/interfaces/custom/custom-config";
+import { ICustomConfig } from "../../../framework-helpers/interfaces/custom/v2-framework/custom-config";
 import { ICustomNavigationBehaviorHelper } from "../../../../../src/e2e/support/framework-helpers/interfaces/custom-navigation-behavior-helper";
 import { PageHelper } from "../../../../../src/e2e/support/framework-helpers/implementations/page-helper.js";
 import { CUSTOMTYPES } from "../../../../IoC/custom/v2-framework/custom-types";

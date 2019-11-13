@@ -2,18 +2,17 @@ import { expect, should } from 'chai';
 import { Given, When } from 'cucumber';
 import { browser } from 'protractor';
 import * as chai from "chai";
-import * as chaiAsPromised from "chai-as-promised";
 import { RetryHelper } from "../../../support/steps-helpers/custom/v2-framework/retry_helper"
 
 chai.should();
-chai.use(chaiAsPromised);
 
-import { WebElementHelper } from 'tabcorp-cucumber-protractor-framework-v2';
-import { BrowserWait } from 'tabcorp-cucumber-protractor-framework-v2';
-import { RegistrationIoC } from 'tabcorp-cucumber-protractor-framework-v2';
-import { BASETYPES } from 'tabcorp-cucumber-protractor-framework-v2';
-import { ICustomNavigationBehaviorHelper } from "tabcorp-cucumber-protractor-framework-v2";
-import { IJurisdictionHelper } from "tabcorp-cucumber-protractor-framework-v2";
+import { WebElementHelper } from '../../../../src/e2e/support/framework-helpers/implementations/web-element-helper';
+import { BrowserWait } from '../../../../src/e2e/support/framework-helpers/implementations/browser-wait';
+import { RegistrationIoC } from '../../../../src/e2e/IoC/registration-ioc';
+import { BASETYPES } from '../../../../src/e2e/IoC/base-types';
+import { ICustomNavigationBehaviorHelper } from "../../../../src/e2e/support/framework-helpers/interfaces/custom-navigation-behavior-helper";
+import { IJurisdictionHelper } from "../../../../src/e2e/support/steps-helpers/interfaces/jurisdiction-helper";
+import { PageHelper } from '../../../../src/e2e/support/framework-helpers/implementations/page-helper';
 import { PageURLHelper } from "../../../support/steps-helpers/custom/v2-framework/page-url-helper"
 
 import { CUSTOMTYPES } from "../../../IoC/custom/v2-framework/custom-types";
@@ -25,20 +24,16 @@ const jurisdictionHelper = (): IJurisdictionHelper => RegistrationIoC.getContain
 const browserWait = (): BrowserWait => RegistrationIoC.getContainer().get<BrowserWait>(BASETYPES.BrowserWait);
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const retryHelper = (): RetryHelper => RegistrationIoC.getContainer().get<RetryHelper>(CUSTOMTYPES.RetryHelper);
+const pageHelper = (): PageHelper => RegistrationIoC.getContainer().get<PageHelper>(BASETYPES.PageHelper);
 
 Given(/^I am on the "([^"]*)" page$/, async (pageName: string) => {
-  await customNavigationHelper().setCurrentPage(pageName);
+  await pageHelper().navigateToPage(pageName);
 });
 
 When(/^I am directed to the "([^"]*)" page$/, async (pageName: string) => {
   const definedPageURL = await pageURLHelper().getDefinedPageURL(pageName);
   await customNavigationHelper().setCurrentPage(pageName);
-  return retryHelper().waitFor(async function() {
-    let result = false;
-    browser.waitForAngular();
-    result = await browser.getCurrentUrl().should.eventually.contain(definedPageURL);
-    return result;
-  });
+  await browser.getCurrentUrl().should.contain(definedPageURL);
 });
 
 When(/^I am directed to the "([^"]*)" dialog$/, async (pageName: string) => {

@@ -1,7 +1,7 @@
 import { injectable, inject } from "inversify";
 
 import { CUSTOMTYPES } from "../../../../IoC/custom/v2-framework/custom-types";
-import { ICustomConfig } from "../../../framework-helpers/interfaces/custom/custom-config";
+import { ICustomConfig } from "../../../framework-helpers/interfaces/custom/v2-framework/custom-config";
 
 @injectable()
 export class NumberHelper {

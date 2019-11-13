@@ -8,8 +8,9 @@
     "typings/**/*.d.ts",
     "custom_typings/**/*.d.ts"
   ],
-  "features": "../../e2e_v2/**/*.feature",
+  "features": "../../../e2e/**/*.feature",
   "cucumberRequire": [
+    "../../src/e2e/step-definitions/**/*.js",
     "../step-definitions/**/*.js",
     "../support/**/**/*.js",
     "../support/**/*.js",
@@ -38,8 +39,8 @@
       },
       "afterClickWaitDelay": 50,
       "relativePaths": {
-        "urls": "./e2e_v2/mappings/pages/pages",
-        "elements": "./e2e_v2/mappings/pages/",
+        "urls": "./e2e/mappings/pages/pages",
+        "elements": "./e2e/mappings/pages/",
         "scripts": "/scripts/"
       },
       "disableTransitions": true,
@@ -49,12 +50,12 @@
       "animationClasses": [".spinner-circular", ".spinner-path", ".success-tick", ".success", ".fadeScaleDown", ".fadeScaleDown .fa-inverse", ".fail-cross", ".fail", ".fadeScaleShake", ".fadeScaleShake .fa-inverse"]
     },
     "custom": {
-      "urlsPath": "./e2e_v2/mappings/pages/pages",
+      "urlsPath": "./e2e/mappings/pages/pages",
       "loginPromptCheckUpDelay": 5,
       "logginLevel":"error",
-      "jurisdictions": "./e2e_v2/mappings/jurisdiction",
+      "jurisdictions": "./e2e/mappings/jurisdiction",
       "mockServerURL" : "http://localhost:9003",
-      "jsonPayloadPath" : "./e2e_v2/mappings/json_payloads/"
+      "jsonPayloadPath" : "./e2e/mappings/json_payloads/"
     }
   }
 }

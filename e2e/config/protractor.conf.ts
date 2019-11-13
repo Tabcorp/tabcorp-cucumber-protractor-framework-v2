@@ -19,14 +19,14 @@ import * as e2econfig from './e2e.conf.json';
 import { browser } from 'protractor';
 import undefinedError = Mocha.utils.undefinedError;
 
-const jsonReports = path.join(process.cwd(), 'e2e_v2/reports/json');
-const htmlReports = path.join(process.cwd(), 'e2e_v2/reports/html');
-const screenshots = path.join(process.cwd(), 'e2e_v2/reports/screenshots');
+const jsonReports = path.join(process.cwd(), 'e2e/reports/json');
+const htmlReports = path.join(process.cwd(), 'e2e/reports/html');
+const screenshots = path.join(process.cwd(), 'e2e/reports/screenshots');
 let scenario_tags = [];
 scenario_tags.push("~@wip");
 
 const setupDeviceEmulation = () => {
-  const tags          = process.env.FORM_PLATFORM_TAG || "@desktop";
+  const tags          = process.env.PLATFORM_TAG || "@desktop";
   const isMobile      = tags.includes('@mobile');
   const isTablet      = tags.includes('@tablet');
   const isDesktop     = tags.includes('@desktop');

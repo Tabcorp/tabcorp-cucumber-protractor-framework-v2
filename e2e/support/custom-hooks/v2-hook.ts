@@ -3,11 +3,11 @@ import { browser, protractor } from 'protractor';
 import * as requestPromise from "request-promise";
 import { expect } from 'chai';
 
-import { RegistrationIoC } from 'RegistrationIoC';
-import { BASETYPES } from 'BASETYPES';
-import { IRequiredConfig } from 'IRequiredConfig';
-import { RequiredConfig } from 'RequiredConfig2';
-import { CUSTOMTYPES } from "CUSTOMTYPES";
+import { RegistrationIoC } from '../../../src/e2e/IoC/registration-ioc';
+import { BASETYPES } from '../../../src/e2e/IoC/base-types';
+import { IRequiredConfig } from '../../../src/e2e/support/framework-helpers/interfaces/required-config';
+import { RequiredConfig } from '../../../src/e2e/support/framework-helpers/implementations/required-config';
+import { CUSTOMTYPES } from "../../IoC/custom/v2-framework/custom-types";
 
 import { BaseCustomImplementationRegistration, CustomTypeRegistration } from '../../IoC/custom/v2-framework/custom-registration';
 

@@ -1,11 +1,11 @@
 import { Container } from "inversify";
 
-import { BASETYPES } from "tabcorp-cucumber-protractor-framework-v2"
-import { IComponentsWait } from "tabcorp-cucumber-protractor-framework-v2";
-import { ICustomNavigationBehaviorHelper } from "tabcorp-cucumber-protractor-framework-v2";
-import { IWebElementLoader } from "tabcorp-cucumber-protractor-framework-v2";
-import { ILogger } from "tabcorp-cucumber-protractor-framework-v2";
-import { IJurisdictionHelper } from "tabcorp-cucumber-protractor-framework-v2";
+import { BASETYPES } from "../../../../src/e2e/IoC/base-types"
+import { IComponentsWait } from "../../../../src/e2e/support/framework-helpers/interfaces/component-wait";
+import { ICustomNavigationBehaviorHelper } from "../../../../src/e2e/support/framework-helpers/interfaces/custom-navigation-behavior-helper";
+import { IWebElementLoader } from "../../../../src/e2e/support/framework-helpers/interfaces/web-element-interfaces";
+import { ILogger } from "../../../../src/e2e/support/logger/logger";
+import { IJurisdictionHelper } from "../../../../src/e2e/support/steps-helpers/interfaces/jurisdiction-helper";
 
 import { FormAngularComponentsWait } from "../../../support/framework-helpers/implementations/custom/v2-framework/angular-components-helper";
 import { FormWebElementLoader } from "../../../support/framework-helpers/implementations/custom/v2-framework/web-element-loader";
@@ -19,7 +19,7 @@ import { PageURLHelper } from "../../../support/steps-helpers/custom/v2-framewor
 import { RetryHelper } from "../../../support/steps-helpers/custom/v2-framework/retry_helper";
 import { FormCustomNavigationBehavior }  from "../../../support/framework-helpers/implementations/custom/v2-framework/custom-navigation-behavior-helper";
 
-import { ICustomConfig } from "../../../support/framework-helpers/interfaces/custom/custom-config";
+import { ICustomConfig } from "../../../support/framework-helpers/interfaces/custom/v2-framework/custom-config";
 import { CUSTOMTYPES } from "./custom-types";
 
 

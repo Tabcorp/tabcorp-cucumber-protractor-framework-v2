@@ -1,10 +1,11 @@
 import { browser } from "protractor";
 import { injectable, inject } from "inversify";
 
-import {ICustomNavigationBehaviorHelper, IRequiredConfig} from "ICustomNavigationBehaviorHelper";
-import { BASETYPES } from "BASETYPES";
+import { IRequiredConfig} from "../../../../../../src/e2e/support/framework-helpers/interfaces/required-config";
+import { ICustomNavigationBehaviorHelper } from "../../../../../../src/e2e/support/framework-helpers/interfaces/custom-navigation-behavior-helper";
+import { BASETYPES } from "../../../../../../src/e2e/IoC/base-types";
 
-import { ICustomConfig } from "../../../interfaces/custom/custom-config";
+import { ICustomConfig } from "../../../interfaces/custom/v2-framework/custom-config";
 
 import * as path from 'path';
 import * as fs from 'fs';
@@ -57,7 +58,6 @@ export class FormCustomNavigationBehavior implements ICustomNavigationBehaviorHe
   public async triggerSystemSpecificBehaviorPostNavigation(destinationUrl: string): Promise<void> {}
 
   getCurrentPage(): string {
-    //console.log("getCurrentPage ", this.currentPage);
     return this.currentPage;
   }
   setCurrentPage(pageName: string) {

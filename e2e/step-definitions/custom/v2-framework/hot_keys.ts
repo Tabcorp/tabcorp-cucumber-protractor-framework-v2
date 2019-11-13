@@ -1,9 +1,9 @@
 import { Then } from 'cucumber';
 import { browser, protractor, ElementFinder } from 'protractor';
 
-import { RegistrationIoC } from 'tabcorp-cucumber-protractor-framework-v2';
-import { BASETYPES } from 'tabcorp-cucumber-protractor-framework-v2';
-import { WebElementHelper } from 'tabcorp-cucumber-protractor-framework-v2';
+import { RegistrationIoC } from '../../../../src/e2e/IoC/registration-ioc';
+import { BASETYPES } from '../../../../src/e2e/IoC/base-types';
+import { WebElementHelper } from '../../../../src/e2e/support/framework-helpers/implementations/web-element-helper';
 
 
 Then(/^I press the enter key$/, async () => {

@@ -2,7 +2,7 @@ import { ElementFinder, logging } from "protractor";
 import { injectable, inject } from "inversify";
 
 import { ILogger } from "../../../../../src/e2e/support/logger/logger";
-import { ICustomConfig } from "../../../framework-helpers/interfaces/custom/custom-config";
+import { ICustomConfig } from "../../../framework-helpers/interfaces/custom/v2-framework/custom-config";
 import { LogginLevel, ILog } from "../../../../../src/e2e/support/framework-helpers/interfaces/loggin-interfaces";
 
 import { CUSTOMTYPES } from "../../../../IoC/custom/v2-framework/custom-types";
