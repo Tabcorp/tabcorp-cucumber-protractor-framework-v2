@@ -16,7 +16,6 @@ import { StoredElementDataHelper } from "../../../support/steps-helpers/custom/v
 import { StringHelper } from "../../../support/steps-helpers/custom/v2-framework/string-helper";
 import { NumberHelper } from "../../../support/steps-helpers/custom/v2-framework/number-helper";
 import { PageURLHelper } from "../../../support/steps-helpers/custom/v2-framework/page-url-helper";
-import { RetryHelper } from "../../../support/steps-helpers/custom/v2-framework/retry_helper";
 import { FormCustomNavigationBehavior }  from "../../../support/framework-helpers/implementations/custom/v2-framework/custom-navigation-behavior-helper";
 
 import { ICustomConfig } from "../../../support/framework-helpers/interfaces/custom/v2-framework/custom-config";
@@ -46,7 +45,6 @@ export const CustomTypeRegistration = (container: Container) => {
   container.bind<StringHelper>(CUSTOMTYPES.StringHelper).to(StringHelper);
   container.bind<NumberHelper>(CUSTOMTYPES.NumberHelper).to(NumberHelper);
   container.bind<PageURLHelper>(CUSTOMTYPES.PageURLHelper).to(PageURLHelper);
-  container.bind<RetryHelper>(CUSTOMTYPES.RetryHelper).to(RetryHelper);
 
 };
 

@@ -2,8 +2,6 @@ import { expect, should } from 'chai';
 import { Given, When } from 'cucumber';
 import { browser } from 'protractor';
 import * as chai from "chai";
-import { RetryHelper } from "../../../support/steps-helpers/custom/v2-framework/retry_helper"
-
 chai.should();
 
 import { WebElementHelper } from '../../../../src/e2e/support/framework-helpers/implementations/web-element-helper';
@@ -14,7 +12,6 @@ import { ICustomNavigationBehaviorHelper } from "../../../../src/e2e/support/fra
 import { IJurisdictionHelper } from "../../../../src/e2e/support/steps-helpers/interfaces/jurisdiction-helper";
 import { PageHelper } from '../../../../src/e2e/support/framework-helpers/implementations/page-helper';
 import { PageURLHelper } from "../../../support/steps-helpers/custom/v2-framework/page-url-helper"
-
 import { CUSTOMTYPES } from "../../../IoC/custom/v2-framework/custom-types";
 import { Container } from 'inversify';
 
@@ -23,7 +20,6 @@ const customNavigationHelper = (): ICustomNavigationBehaviorHelper => Registrati
 const jurisdictionHelper = (): IJurisdictionHelper => RegistrationIoC.getContainer().get<IJurisdictionHelper>(BASETYPES.JurisdictionHelper);
 const browserWait = (): BrowserWait => RegistrationIoC.getContainer().get<BrowserWait>(BASETYPES.BrowserWait);
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
-const retryHelper = (): RetryHelper => RegistrationIoC.getContainer().get<RetryHelper>(CUSTOMTYPES.RetryHelper);
 const pageHelper = (): PageHelper => RegistrationIoC.getContainer().get<PageHelper>(BASETYPES.PageHelper);
 
 Given(/^I am on the "([^"]*)" page$/, async (pageName: string) => {
