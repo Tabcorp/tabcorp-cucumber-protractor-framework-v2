@@ -61,7 +61,7 @@ const cucumberReporterOptions = {
   customData: {
     title: 'Run info',
     data: [
-      { label: 'Project', value: 'Lott Protractor Tests' },
+      { label: 'Project', value: 'v2 Protractor Tests' },
       { label: 'Base Url', value: e2econfig.baseUrl },
       { label: 'Execution Start Time', value: moment().format() }
     ]
