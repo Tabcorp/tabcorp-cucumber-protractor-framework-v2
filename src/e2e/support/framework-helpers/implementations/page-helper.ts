@@ -19,7 +19,6 @@ export class PageHelper {
   public async navigateToPage(pageName: string): Promise<void> {
     const url = await this.generateUrl(pageName);
     this.customNavigationBehavior.setCurrentPage(pageName);
-
     await this.navigateToUrl(url);
   }
 

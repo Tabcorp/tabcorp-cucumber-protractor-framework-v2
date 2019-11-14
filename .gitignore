@@ -4,3 +4,4 @@ reports/
 mochawesome-report/
 .idea/
 .editorconfig
+package-lock.json
