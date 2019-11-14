@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+QUEUE=$QUEUE
 PIPELINE=${PIPELINE:-build}
 BUILDKITE_AGENT_META_DATA_AWS_INSTANCE_ID="${BUILDKITE_AGENT_META_DATA_AWS_INSTANCE_ID:-}"
 NEW_VERSION="$(git describe --tags --abbrev=0 develop)_$(git rev-parse --short=8 HEAD)"
