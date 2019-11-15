@@ -161,21 +161,16 @@ npm run clean
 - Then the "([^"]*)" contains no text$
 - Then the "([^"]*)" does not contain the text "([^"]*)"
 - Then the "([^"]*)" contains the text "([^"]*)"
-- Then the "([^"]*)" for specific "([^"]*)" contains the text "([^"]*)"
 - Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"
 - Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"
-- Then the "([^"]*)" contains the "([^"]*)" text "([^"]*)
-- Then the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"
-- Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute
+- Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the text "([^"]*)"
 - Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"
+- Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute
+- Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - Then the "([^"]*)" input should equal the value "([^"]*)"
 - Then the "([^"]*)" contains the value "([^"]*)"
-- Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element contains the "([^"]*)" attribute "([^"]*)"
+- Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 
 ##### verify-visibility
 

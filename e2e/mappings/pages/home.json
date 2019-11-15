@@ -1,5 +1,10 @@
 {
-  "contacts header" : "contacts-header"
+  "contacts header" : "contacts-header",
+  "contact item" : "contact-item",
+  "search" : "search",
+  "edit button" : "edit",
+  "delete button" : "delete",
+  "contact" : "contact-"
 }
 
 
