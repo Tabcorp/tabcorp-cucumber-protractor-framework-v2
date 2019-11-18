@@ -1,3 +1,4 @@
 {
-  "home" : "/"
+  "home" : "/",
+  "add_record": "/tasks/create"
 }

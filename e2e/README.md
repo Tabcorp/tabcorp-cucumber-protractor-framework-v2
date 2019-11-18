@@ -76,9 +76,9 @@
 - [x] Then the "([^"]*)" input should equal the value "([^"]*)"
 - [x] Then the "([^"]*)" contains the value "([^"]*)"
 - [x] Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
-- [ ] Then the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
-- [ ] Then the "([^"]*)" (?:element|dropdown) contains a total of "([^"]*)" options
+- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
+- [x] Then the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
+- [x] Then the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" options
 
 ##### verify-visibility
 

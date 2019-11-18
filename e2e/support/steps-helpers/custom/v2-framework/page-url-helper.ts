@@ -12,7 +12,6 @@ export class PageURLHelper {
   private readonly customConfig: ICustomConfig;
 
   constructor(@inject(CUSTOMTYPES.CustomConfig) customConfig : ICustomConfig) {
-    console.log()
     this.customConfig = customConfig;
   }
 

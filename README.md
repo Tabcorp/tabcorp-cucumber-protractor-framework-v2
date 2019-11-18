@@ -171,6 +171,9 @@ npm run clean
 - Then the "([^"]*)" input should equal the value "([^"]*)"
 - Then the "([^"]*)" contains the value "([^"]*)"
 - Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
+- Then the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
+- Then the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" options
 
 ##### verify-visibility
 

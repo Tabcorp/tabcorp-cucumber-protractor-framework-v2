@@ -116,7 +116,7 @@ Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eleme
       : expect(elementAttribute).to.include(attribute);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
+Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
   let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
   const element = await elementHelper().getElementByCss(elementName);
   const options = await elementHelper().getAllElementsByTagName('option', element);
@@ -124,7 +124,7 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains 
   expect(elementText).to.include(expectedElementText);
 });
 
-Then(/^the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
+Then(/^the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
   const element = await elementHelper().getElementByCss(elementName);
   const options = await elementHelper().getAllElementsByTagName('option', element);
   let index = options.length - 1;
@@ -132,7 +132,7 @@ Then(/^the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/
   expect(elementText).to.include(expectedElementText);
 });
 
-Then(/^the "([^"]*)" (?:element|dropdown) contains a total of "([^"]*)" options$/, async (elementName: string, count: string) => {
+Then(/^the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" options$/, async (elementName: string, count: string) => {
   let expectedOptionCount = parseInt(count, 10);
   const element = await elementHelper().getElementByCss(elementName);
   const options = await elementHelper().getAllElementsByTagName('option', element);
