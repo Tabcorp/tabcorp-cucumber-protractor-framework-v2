@@ -82,20 +82,22 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)
     : expect(elementAttribute).to.include(attribute)
 });
 
-/* ---- contains / equal the value ---- */
-Then(/^the "([^"]*)" input should equal the value "([^"]*)"$/, async (elementName: string, elementValue: string) => {
+Then(/^the "([^"]*)" (does not )?equals? the value "([^"]*)"$/, async (elementName: string,  negate: string, elementValue: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementAttribute = await htmlHelper().getAttribute(element, 'value');
-  expect(elementAttribute).to.equals(elementValue);
+  negate
+    ? expect(elementAttribute).not.to.equals(elementValue)
+    : expect(elementAttribute).to.equals(elementValue);
 });
 
-Then(/^the "([^"]*)" input contains the value "([^"]*)"$/, async (elementName: string, elementValue: string) => {
+Then(/^the "([^"]*)" (does not )?contains? the value "([^"]*)"$/, async (elementName: string, negate: string, elementValue: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementAttribute = await htmlHelper().getAttribute(element, 'value');
-  expect(elementAttribute).to.include(elementValue);
+  negate
+    ? expect(elementAttribute).not.to.include(elementValue)
+    : expect(elementAttribute).to.include(elementValue);
 });
 
-/* verify the attribute value of an element within another element */
 Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (subelement: string, parentElementIndex: string, mainElementName: string, negate: string, attributeType: string, attribute: string) => {
   const index = parseInt(parentElementIndex, 10) - 1;
   let element = await elementHelper().getElementInElementByCss(mainElementName, subelement, 0,true,index);

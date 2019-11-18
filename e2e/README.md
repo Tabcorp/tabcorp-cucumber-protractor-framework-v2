@@ -71,8 +71,8 @@
 - [x] Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute
 - [x] Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- [x] Then the "([^"]*)" input should equal the value "([^"]*)"
-- [x] Then the "([^"]*)" contains the value "([^"]*)"
+- [x] Then the "([^"]*)" (does not )?equals? the value "([^"]*)"
+- [x] Then the "([^"]*)" (does not )?contains? the value "([^"]*)"
 - [x] Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - [x] Then the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
