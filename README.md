@@ -166,8 +166,8 @@ npm run clean
 - Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute
 - Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- Then the "([^"]*)" input should equal the value "([^"]*)"
-- Then the "([^"]*)" contains the value "([^"]*)"
+- Then the "([^"]*)" should equal the value "([^"]*)"
+- Then the "([^"]*)" (does not )?contains? the value "([^"]*)"
 - Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - Then the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"

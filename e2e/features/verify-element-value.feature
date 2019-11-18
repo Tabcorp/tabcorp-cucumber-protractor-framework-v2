@@ -57,21 +57,23 @@ Feature: As an automation framework I can verify element value
 
     @desktop
     @smoke
-    Scenario: As a automation framework I can verify an input has the exact text
+    Scenario: As a automation framework I can verify an element has the exact value
       Given I am on the "home" page
         And I fill in the "search" input with "Louis XVI"
-      Then the "search" input should equal the value "Louis XVI"
+      Then the "search" equals the value "Louis XVI"
+        And the "search" does not equal the value "LOUIS XXVI"
 
     @desktop
     @smoke
-    Scenario: As a automation framework I can verify an input contains the text
+    Scenario: As a automation framework I can verify an element contains the value
       Given I am on the "home" page
         And I fill in the "search" input with "Louis XVI"
-      Then the "search" input contains the value "XVI"
+      Then the "search" contains the value "XVI"
+        And the "search" does not contain the value "XXVI"
 
     @desktop
     @smoke
-    Scenario: As a automation framework I can verify an input has the exact text
+    Scenario: As a automation framework I can verify an element within an element contains the attribute and does not contain the attribute
       Given I am on the "home" page
         And the "edit" element within the "3rd" "contact item" element contains the "name" attribute "edit"
       Then the "edit" element within the "3rd" "contact item" element does not contain the "name" attribute "delete"
@@ -95,7 +97,7 @@ Feature: As an automation framework I can verify element value
 
     @desktop
     @smoke
-    Scenario: As a automation framework I can how many options a select contains
+    Scenario: As a automation framework I can count how many options a select contains
       Given I am on the "home" page
         And I click the "add" button
       When I am directed to the "add record" page
