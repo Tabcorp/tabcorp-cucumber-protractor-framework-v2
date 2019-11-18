@@ -18,71 +18,39 @@ Then(/^the "([^"]*)" contains no text$/, async (elementName: string) => {
   expect(elementText).equals('');
 });
 
-Then(/^the "([^"]*)" does not contain the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
+Then(/^the "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementName: string, negate: string, expectedElementText: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementText = await htmlHelper().getElementText(element);
   const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.not.include(expectedElementText);
+  negate
+      ? expect(currentElementText).to.not.include(expectedElementText)
+      : expect(currentElementText).to.include(expectedElementText);
 });
 
-Then(/^the "([^"]*)" contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
-  const elementText = await htmlHelper().getElementText(element);
-  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.include(expectedElementText);
-});
-Then(/^the "([^"]*)" for specific "([^"]*)" contains the text "([^"]*)"$/, async (elementName: string, selectorModifiers: string, expectedElementText: string) => {
-  const params: string[] = selectorModifiers.split(',');
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName, 0, true, params);
-  const elementText = await htmlHelper().getElementText(element);
-  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.include(expectedElementText);
-});
-
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
-  let index: number = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
-  const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  const elementText = await htmlHelper().getElementText(element);
-  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.include(expectedElementText);
-});
-
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"$/, async (elementIndex: string, elementName: string, expectedElementText: string) => {
+Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementIndex: string, elementName: string, negate: string, expectedElementText: string) => {
   let index: number = parseInt(elementIndex.replace(/^\D+/g, ''), 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
   const elementText = await htmlHelper().getElementText(element);
   const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.not.include(expectedElementText);
+  negate
+      ? expect(currentElementText).to.not.include(expectedElementText)
+      : expect(currentElementText).to.include(expectedElementText);
 });
 
-Then(/^the "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, async (elementName: string, attributeType: string, attribute: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
-  const isTextPresent: boolean = await htmlHelper().isElementTextPresent(element, attributeType, attribute);
-  expect(isTextPresent).to.be.true;
+Then(/^the "([^"]*)" for specific "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementName: string, selectorModifiers: string, negate: string, expectedElementText: string) => {
+  const params: string[] = selectorModifiers.split(',');
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, 0, true, params);
+  const elementText = await htmlHelper().getElementText(element);
+  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+  negate
+      ? expect(currentElementText).not.to.include(expectedElementText)
+      : expect(currentElementText).to.include(expectedElementText);
 });
 
-Then(/^the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, async (elementName: string, attributeType: string, attribute: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
-  const isTextPresent: boolean = await htmlHelper().isElementTextPresent(element, attributeType, attribute);
-  expect(isTextPresent).to.be.false;
-});
-
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
-  const index = parseInt(elementIndex, 10) - 1;
-  const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  const isTextPresent: boolean = await htmlHelper().isElementTextPresent(element, attributeType, attribute);
-  expect(isTextPresent).to.be.true;
-});
-
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
-  const index = parseInt(elementIndex, 10) - 1;
-  const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  const isTextPresent: boolean = await htmlHelper().isElementTextPresent(element, attributeType, attribute);
-  expect(isTextPresent).to.be.false;
-});
-
-Then(/^the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementName: string, negate: string, attributeType: string, attribute: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+Then(/^the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementName: string, selectorModifiers: string, negate: string, attributeType: string, attribute: string) => {
+  let element: ElementFinder = null;
+  const params: string[] = selectorModifiers.split(',');
+  element = await elementHelper().getElementByCss(elementName, 0, true, params);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
   negate
       ? expect(elementAttribute).not.to.include(attribute)
@@ -97,30 +65,21 @@ Then(/^the "([^"]*)" (does not )?contains? the "([^"]*)" attribute$/, async (ele
     : expect(elementAttribute).not.to.be.null;
 });
 
-Then(/^the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementName: string, selectorModifiers: string, negate: string, attributeType: string, attribute: string) => {
-  let element: ElementFinder = null;
-  const params: string[] = selectorModifiers.split(',');
-  element = await elementHelper().getElementByCss(elementName, 0, true, params);
+Then(/^the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementName: string, negate: string, attributeType: string, attribute: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
   negate
       ? expect(elementAttribute).not.to.include(attribute)
       : expect(elementAttribute).to.include(attribute);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
+Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, negate: string, attributeType: string, attribute: string) => {
   const index = parseInt(elementIndex, 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  expect(element).to.include(attributeType);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
-  expect(elementAttribute).to.include(attribute);
-});
-
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, attributeType: string, attribute: string) => {
-  const index = parseInt(elementIndex, 10) - 1;
-  const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  expect(element).to.include(attributeType);
-  const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
-  expect(elementAttribute).not.to.include(attribute);
+  negate
+    ? expect(elementAttribute).not.to.include(attribute)
+    : expect(elementAttribute).to.include(attribute)
 });
 
 /* ---- contains / equal the value ---- */
@@ -130,21 +89,23 @@ Then(/^the "([^"]*)" input should equal the value "([^"]*)"$/, async (elementNam
   expect(elementAttribute).to.equals(elementValue);
 });
 
-Then(/^the "([^"]*)" contains the value "([^"]*)"$/, async (elementName: string, elementValue: string) => {
+Then(/^the "([^"]*)" input contains the value "([^"]*)"$/, async (elementName: string, elementValue: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementAttribute = await htmlHelper().getAttribute(element, 'value');
   expect(elementAttribute).to.include(elementValue);
 });
 
 /* verify the attribute value of an element within another element */
-Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element contains the "([^"]*)" attribute "([^"]*)"$/, async (subelement: string, parentElementIndex: string, mainElementName: string, attributeType: string, attribute: string) => {
+Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (subelement: string, parentElementIndex: string, mainElementName: string, negate: string, attributeType: string, attribute: string) => {
   const index = parseInt(parentElementIndex, 10) - 1;
   let element = await elementHelper().getElementInElementByCss(mainElementName, subelement, 0,true,index);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
-  expect(elementAttribute).to.include(attribute);
+  negate
+      ? expect(elementAttribute).not.to.include(attribute)
+      : expect(elementAttribute).to.include(attribute);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
+Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
   let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
   const element = await elementHelper().getElementByCss(elementName);
   const options = await elementHelper().getAllElementsByTagName('option', element);
@@ -152,7 +113,7 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains 
   expect(elementText).to.include(expectedElementText);
 });
 
-Then(/^the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
+Then(/^the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
   const element = await elementHelper().getElementByCss(elementName);
   const options = await elementHelper().getAllElementsByTagName('option', element);
   let index = options.length - 1;
@@ -160,7 +121,7 @@ Then(/^the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"$/
   expect(elementText).to.include(expectedElementText);
 });
 
-Then(/^the "([^"]*)" (?:element|dropdown) contains a total of "([^"]*)" options$/, async (elementName: string, count: string) => {
+Then(/^the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" options$/, async (elementName: string, count: string) => {
   let expectedOptionCount = parseInt(count, 10);
   const element = await elementHelper().getElementByCss(elementName);
   const options = await elementHelper().getAllElementsByTagName('option', element);

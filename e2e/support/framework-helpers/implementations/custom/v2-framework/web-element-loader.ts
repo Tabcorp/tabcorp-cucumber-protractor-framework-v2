@@ -15,7 +15,7 @@ export class FormWebElementLoader implements IWebElementLoader {
 
   private _elementsMap: { [elementName: string]: FormElement } = {};
   private _elementSetLoaded: string[] = [];
-y
+
   private readonly requiredConfig: IRequiredConfig;
   private readonly navigationHelper: FormCustomNavigationBehavior;
 
@@ -26,40 +26,49 @@ y
   }
 
   public async getElementLocator(elementName: string, params: string[] = [], elementsMap?: { [PageWithElementName: string]: FormElement}): Promise<string> {
-    //console.log('#### form locator');
     const currentPage: string = this.navigationHelper.getCurrentPage();
 
-    //console.log('### element name:', elementName);
+//     console.log('### element name:', elementName);
     let elementKey = this.generateElementKey(currentPage, elementName);
-    //console.log('### element key:', elementKey);
-    //console.log('### map:', this._elementsMap);
+//     console.log('### element key:', elementKey);
+//     console.log('### map:', this._elementsMap);
+//     console.log('### local map ', elementsMap)
     const theMap = (elementsMap || this._elementsMap);
     let elementSelector: string = theMap && theMap[elementKey] && theMap[elementKey].dataId;
 
     //Check by page
-    //console.log('#### selector:', elementSelector);
+//     console.log("1>> ", elementSelector)
     if (elementSelector == null) {
       this.loadElementMap(currentPage);
-      //console.log('### map 1:', this._elementsMap);
       elementSelector = (this._elementsMap[elementKey] || {} as any).dataId
     }
 
     //Not in current page check common
-    //console.log('#### selector 2:', elementSelector);
+//     console.log("2>> ", elementSelector)
     if (elementSelector == null) {
       elementKey = this.generateElementKey('common', elementName);
       this.loadElementMap('common');
-      //console.log('### map 2:', this._elementsMap);
       elementSelector = (this._elementsMap[elementKey] || {} as any).dataId
     }
 
     //finally check by passed in
+//     console.log("3>> ", elementSelector)
     if (elementSelector == null) {
-      elementSelector = `[data-id=${"'"+elementName+"'"}`
+      elementSelector = elementName;
     }
 
-    return elementSelector;
+    return this.generateDataTestId(elementSelector, params)
   }
+
+  private generateDataTestId(genericTestId: string, params: string[]) {
+      let testId: string = genericTestId;
+      if (params != null) {
+        for (const value of params) {
+          testId = testId + value
+        }
+      }
+      return `[data-id=${"'"+testId+"']"}`;
+    }
 
   public async loadElementMap(pageId?: string): Promise<{ [elementName:string]: FormElement }> {
 
@@ -73,7 +82,7 @@ y
           const keyName = this.generateElementKey(pageId, key);
           const element: FormElement = {
             pageName: pageId,
-            dataId: `[data-id=${"'"+elementsJsonObject[key]+"'"}`,
+            dataId: elementsJsonObject[key],
             name: key
           }
           this._elementsMap[keyName] = element;
@@ -91,4 +100,5 @@ y
     //console.log("generateElementKey ", '[data-id='+(pageId + key).toLocaleLowerCase()+']');
     return (pageId + key).toLocaleLowerCase();
   }
+
 }

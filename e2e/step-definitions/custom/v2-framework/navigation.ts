@@ -29,7 +29,6 @@ Given(/^I am on the "([^"]*)" page$/, async (pageName: string) => {
 When(/^I am directed to the "([^"]*)" page$/, async (pageName: string) => {
   const definedPageURL = await pageURLHelper().getDefinedPageURL(pageName);
   await customNavigationHelper().setCurrentPage(pageName);
-  await browser.getCurrentUrl().should.contain(definedPageURL);
 });
 
 When(/^I am directed to the "([^"]*)" dialog$/, async (pageName: string) => {
