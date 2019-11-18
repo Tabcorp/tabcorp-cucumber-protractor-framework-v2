@@ -64,10 +64,8 @@
 ##### verify-value
 
 - [x] Then the "([^"]*)" contains no text
-- [x] Then the "([^"]*)" does not contain the text "([^"]*)"
-- [x] Then the "([^"]*)" contains the text "([^"]*)"
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"
+- [x] Then the "([^"]*)" (does not )?contains? the "([^"]*)"
+- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)"
 - [x] Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the text "([^"]*)"
 - [x] Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - [x] Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute

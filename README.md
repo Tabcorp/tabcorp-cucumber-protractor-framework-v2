@@ -159,10 +159,8 @@ npm run clean
 ##### verify-value
 
 - Then the "([^"]*)" contains no text$
-- Then the "([^"]*)" does not contain the text "([^"]*)"
-- Then the "([^"]*)" contains the text "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"
+- Then the "([^"]*)" (does not )?contains? the "([^"]*)"
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)"
 - Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the text "([^"]*)"
 - Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute

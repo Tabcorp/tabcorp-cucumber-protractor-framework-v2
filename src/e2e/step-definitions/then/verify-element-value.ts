@@ -18,34 +18,23 @@ Then(/^the "([^"]*)" contains no text$/, async (elementName: string) => {
   expect(elementText).equals('');
 });
 
-Then(/^the "([^"]*)" does not contain the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
+Then(/^the "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementName: string, negate: string, expectedElementText: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   const elementText = await htmlHelper().getElementText(element);
   const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.not.include(expectedElementText);
+  negate
+      ? expect(currentElementText).to.not.include(expectedElementText)
+      : expect(currentElementText).to.include(expectedElementText);
 });
 
-Then(/^the "([^"]*)" contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
-  const elementText = await htmlHelper().getElementText(element);
-  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.include(expectedElementText);
-});
-
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
-  let index: number = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
-  const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
-  const elementText = await htmlHelper().getElementText(element);
-  const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.include(expectedElementText);
-});
-
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"$/, async (elementIndex: string, elementName: string, expectedElementText: string) => {
+Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementIndex: string, elementName: string, negate: string, expectedElementText: string) => {
   let index: number = parseInt(elementIndex.replace(/^\D+/g, ''), 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
   const elementText = await htmlHelper().getElementText(element);
   const currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
-  expect(currentElementText).to.not.include(expectedElementText);
+  negate
+      ? expect(currentElementText).to.not.include(expectedElementText)
+      : expect(currentElementText).to.include(expectedElementText);
 });
 
 Then(/^the "([^"]*)" for specific "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementName: string, selectorModifiers: string, negate: string, expectedElementText: string) => {
