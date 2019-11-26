@@ -4,8 +4,11 @@
   "search" : "search",
   "edit button" : "edit",
   "add button" : "add",
+  "hidden div" : "hidden-div",
+  "hidden" : "hidden-",
   "delete button" : "delete",
-  "contact" : "contact-"
+  "contact" : "contact-",
+  "hidden contact" : "hidden-contact-"
 }
 
 

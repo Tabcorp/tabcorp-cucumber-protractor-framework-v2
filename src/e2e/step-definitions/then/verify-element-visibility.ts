@@ -20,29 +20,22 @@ Then(/^I can see "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons
   const count: number = elementCount == null ? 1 : parseInt(elementCount);
   const params: string[] = selectorModifiers.split(',');
   const elements: ElementFinder[] = await elementHelper().getAllElementsByCss(elementName, true, params);
-  expect(elements.length).to.equal(elementCount);
+  expect(elements.length.toString()).to.equal(elementCount);
 });
 
-Then(/^I can see at least "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)$/, async (minElementCount: number, elementName: string) => {
+Then(/^I can see (more than|at least) "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)$/, async (negate: string, expectedElementCount: string, elementName: string) => {
   const elements: ElementFinder[] = await elementHelper().getAllElementsByCss(elementName);
-  expect(elements.length).to.gte(minElementCount);
+  negate
+      ? expect(elements.length).to.gte(parseInt(expectedElementCount))
+      : expect(elements.length).to.be.gt(parseInt(expectedElementCount));
 });
 
-Then(/^I can see at least "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)$/, async (minElementCount: number, elementName: string, selectorModifiers: string) => {
+Then(/^I can see (more than|at least) "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)$/, async (negate: string, expectedElementCount: string, elementName: string, selectorModifiers: string) => {
   const params: string[] = selectorModifiers.split(',');
   const elements: ElementFinder[] = await elementHelper().getAllElementsByCss(elementName, true, params);
-  expect(elements.length).to.gte(minElementCount);
-});
-
-Then(/^I can see more than "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)$/, async (expectedElementCount: number, elementName: string) => {
-  const elements: ElementFinder[] =  await elementHelper().getAllElementsByCss(elementName);
-  expect(elements.length).to.be.gt(expectedElementCount);
-});
-
-Then(/^I can see more than "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)$/, async (expectedElementCount: number, elementName: string, selectorModifiers: string) => {
-  const params: string[] = selectorModifiers.split(',');
-  const elements: ElementFinder[] =  await elementHelper().getAllElementsByCss(elementName, true, params);
-  expect(elements.length).to.be.gt(expectedElementCount);
+  negate
+   ? expect(elements.length).to.gte(parseInt(expectedElementCount))
+   : expect(elements.length).to.be.gt(parseInt(expectedElementCount));
 });
 
 Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, async (expectedElementCount: string, subElementName: string, mainElementPosition: string, mainElementName: string) => {
