@@ -177,10 +177,8 @@ npm run clean
 
 - Then I can see "([^"]*)" "([^"]*)" (?:buttons|links|icons|element|elements)
 - Then I can see "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
-- Then I can see at least "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)
-- Then I can see at least "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
-- Then I can see more than "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)
-- Then I can see more than "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
+- Then I can see (more than|at least) "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)
+- Then I can see (more than|at least) "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
 - Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
 - Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
 - Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|element|elements) displayed

@@ -80,19 +80,17 @@
 
 ##### verify-visibility
 
-- [ ] Then I can see "([^"]*)" "([^"]*)" (?:buttons|links|icons|element|elements)
-- [ ] Then I can see "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
-- [ ] Then I can see at least "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)
-- [ ] Then I can see at least "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
-- [ ] Then I can see more than "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)
-- [ ] Then I can see more than "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
-- [ ] Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
-- [ ] Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
-- [ ] Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|element|elements) displayed
-- [ ] Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" displayed
-- [ ] Then the "([^"]*)" element should( not)? be displayed
-- [ ] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed
-- [ ] Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be displayed
+- [x] Then I can see "([^"]*)" "([^"]*)" (?:buttons|links|icons|element|elements)
+- [x] Then I can see "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
+- [x] Then I can see (more than|at least) "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)
+- [x] Then I can see (more than|at least) "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
+- [x] Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- [x] Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- [x] Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|element|elements) displayed
+- [x] Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" displayed
+- [x] Then the "([^"]*)" element should( not)? be displayed
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed
+- [x] Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be displayed
 
 ##### alerts
 
