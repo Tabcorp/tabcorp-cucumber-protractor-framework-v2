@@ -20,7 +20,7 @@ Feature: As an automation framework I can verify alerts
 
     @desktop
     @smoke
-    Scenario: As a automation framework I can cancel an dismiss dialog
+    Scenario: As a automation framework I can dismiss an alert dialog
       Given I am on the "home" page
         And I click the "add" button
       When I am directed to the "add record" page
