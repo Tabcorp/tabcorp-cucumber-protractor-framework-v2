@@ -67,11 +67,7 @@ export class HtmlHelper {
   }
 
   public async clickElement(webElement: ElementFinder): Promise<void> {
-    await this.browserWait.waitElementToBeClicked(webElement);
-    await this.browserWait.waitAnimationsToBeCompleted();
-  }
-
-  public async clickElementWithSelectorDirectly(webElement: ElementFinder): Promise<void> {
+    await this.browserWait.waitElementToBeVisible(webElement);
     await this.browserWait.waitElementToBeClicked(webElement);
     await this.browserWait.waitAnimationsToBeCompleted();
   }
@@ -149,6 +145,7 @@ export class HtmlHelper {
 
   public async getElementTextByIndex(elementName: string, index): Promise<string> {
     const element: ElementFinder = await this.elementHelper.getElementByCss(elementName, index);
+    await this.browserWait.waitElementToBeVisible(element);
     return await this.getElementText(element);
   }
 }
