@@ -34,5 +34,4 @@ Feature: As an automation framework I can verify alerts
         And I fill in the "search" input with "not"
         And I click the "delete" button
         And I dismiss the alert dialog
-        And I wait "6" seconds
         And the "contact item" element should be present
