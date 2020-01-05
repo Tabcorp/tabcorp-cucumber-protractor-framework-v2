@@ -197,12 +197,6 @@ npm run clean
 -  When I hover over (the )?"([^"]*)"
 -  When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
 -  When I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element
--  When (I have )?clicked
--  When I scroll down (\d+)
--  When I scroll to the bottom of the page
--  When I scroll to the top of the page
--  When I scroll down (\d+) within the "([^"]*)"
--  When I scroll to the "([^"]*)" element
 -  When I switch to the "(new open|1st|2nd|3rd|[0-9]+th)" tab
 -  When I wait "([^"]*)" seconds
 
