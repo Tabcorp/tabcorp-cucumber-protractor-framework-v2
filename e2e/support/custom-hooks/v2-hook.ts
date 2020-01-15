@@ -33,9 +33,6 @@ BeforeAll(async function () {
 Before(async function (scenario) {
   const requiredConfig: IRequiredConfig = new RequiredConfig(browser.params.requiredConfig);
   setupForAngularApp(requiredConfig.isAngularApp);
-  //const current_scenario = scenario;
-  //console.log(current_scenario);
-  //await setupBrowserResolution(current_scenario);
 });
 
 After(async function (scenario) {

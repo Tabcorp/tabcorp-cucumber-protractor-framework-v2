@@ -25,15 +25,16 @@ export class WebElementHelper {
 
   public async getElementByCss(elementName: string, index: number = 0, expectPresence: boolean = true, nameParams: string[] = [])
     : Promise<ElementFinder> {
+
     let list = await this.getAllElementsByCss(elementName, expectPresence, nameParams);
     return this.getNthElementInList(list, index);
   }
 
   public async getAllElementsByCss(elementName: string, expectPresence: boolean = true, nameParams: string[] = [])
     : Promise<ElementFinder[]> {
+
     const elementLocator: string = await this.webElementLoader.getElementLocator(elementName, nameParams);
     const locatorSelector: Locator = by.css(elementLocator);
-
     let elements = await this.retrieveElements(locatorSelector, expectPresence);
 
     return elements;
@@ -46,6 +47,7 @@ export class WebElementHelper {
   }
   public async getAllElementsByCssContainingText(elementName: string, elementText: string, expectPresence: boolean = true, nameParams: string[] = [])
     : Promise<ElementFinder[]> {
+
     const elementLocator: string = await this.webElementLoader.getElementLocator(elementName, nameParams);
     const locatorSelector: ProtractorLocator = by.cssContainingText(elementLocator, elementText);
 
@@ -57,18 +59,18 @@ export class WebElementHelper {
   public async getElementInElementByCss(parentElementName: string, elementName: string, index: number = 0, expectPresence: boolean = true,
     parentElementIndex: number = 0, parentNameParams: string[] = [], nameParams: string[] = [])
     : Promise<ElementFinder> {
+
       let list = await this.getAllElementsInElementByCss(parentElementName, elementName, parentElementIndex, expectPresence, parentNameParams, nameParams);
       return this.getNthElementInList(list, index);
   }
   public async getAllElementsInElementByCss(parentElementName: string, elementName: string, parentElementIndex: number = 0,
     expectPresence: boolean = true, parentNameParams: string[] = [], nameParams: string[] = [])
     : Promise<ElementFinder[]> {
-    let parentElement: ElementFinder = await this.getElementByCss(parentElementName, parentElementIndex, true, parentNameParams);
 
+    let parentElement: ElementFinder = await this.getElementByCss(parentElementName, parentElementIndex, true, parentNameParams);
     const elementLocator: string = await this.webElementLoader.getElementLocator(elementName, nameParams);
     const locatorSelector: Locator = by.css(elementLocator);
     let elements = await this.retrieveElements(locatorSelector, expectPresence, parentElement);
-
     return elements;
   }
 
@@ -130,6 +132,7 @@ export class WebElementHelper {
   }
 
   private getNthElementInList(elementList: ElementFinder[], index: number) {
+
     const webElement: ElementFinder = elementList && elementList.length > index
                                     ? elementList[index]
                                     : element(by.id(`[NOT-FOUND] [index=${index}] [element=${elementList}]`));

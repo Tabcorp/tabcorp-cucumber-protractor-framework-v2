@@ -103,13 +103,11 @@ npm run clean
 
 ##### verify-element-presence
 
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" does not contain the "([^"]*)" element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" for specific "([^"]*)" element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" does not contain the "([^"]*)" for specific "([^"]*) element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" element
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" element
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
 - Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"
 - Then the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element
 - Then the "([^"]*)" (?:button|link|icon|element) should( not)? be present
 - Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be present
