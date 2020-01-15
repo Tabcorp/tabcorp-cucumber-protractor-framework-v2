@@ -46,7 +46,6 @@ export class FormJurisdictionHelper implements IJurisdictionHelper {
     const currentPage: string = this.customeNavigationBehaviorHelper.getCurrentPage();
     const currentURL = await this.customeNavigationBehaviorHelper.generateUrl(currentPage);
     const currentURLWithJurisdiction = currentURL + "?jurisdiction=" + jurisdiction;
-    //console.log(currentURLWithJurisdiction);
     await this.pageHelper.navigateToUrl(currentURLWithJurisdiction);
   }
 }

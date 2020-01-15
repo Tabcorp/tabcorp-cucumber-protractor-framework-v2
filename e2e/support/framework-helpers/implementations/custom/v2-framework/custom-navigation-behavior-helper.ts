@@ -23,13 +23,11 @@ export class FormCustomNavigationBehavior implements ICustomNavigationBehaviorHe
   }
 
   public async urls(): Promise<{ [pageUrl:string]: string }> {
-    //console.log("form");
 
     if (this._urls == null) {
       this._urls = await this.loadUrlMap();
     }
 
-    //console.log("_urls ", this._urls);
     return this._urls;
   }
 

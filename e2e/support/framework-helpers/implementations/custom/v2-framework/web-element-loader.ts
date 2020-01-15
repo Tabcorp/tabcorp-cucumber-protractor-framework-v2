@@ -27,24 +27,17 @@ export class FormWebElementLoader implements IWebElementLoader {
 
   public async getElementLocator(elementName: string, params: string[] = [], elementsMap?: { [PageWithElementName: string]: FormElement}): Promise<string> {
     const currentPage: string = this.navigationHelper.getCurrentPage();
-
-//     console.log('### element name:', elementName);
     let elementKey = this.generateElementKey(currentPage, elementName);
-//     console.log('### element key:', elementKey);
-//     console.log('### map:', this._elementsMap);
-//     console.log('### local map ', elementsMap)
     const theMap = (elementsMap || this._elementsMap);
     let elementSelector: string = theMap && theMap[elementKey] && theMap[elementKey].dataId;
 
     //Check by page
-//     console.log("1>> ", elementSelector)
     if (elementSelector == null) {
       this.loadElementMap(currentPage);
       elementSelector = (this._elementsMap[elementKey] || {} as any).dataId
     }
 
     //Not in current page check common
-//     console.log("2>> ", elementSelector)
     if (elementSelector == null) {
       elementKey = this.generateElementKey('common', elementName);
       this.loadElementMap('common');
@@ -52,7 +45,6 @@ export class FormWebElementLoader implements IWebElementLoader {
     }
 
     //finally check by passed in
-//     console.log("3>> ", elementSelector)
     if (elementSelector == null) {
       elementSelector = elementName;
     }
@@ -61,6 +53,8 @@ export class FormWebElementLoader implements IWebElementLoader {
   }
 
   private generateDataTestId(genericTestId: string, params: string[]) {
+
+
       let testId: string = genericTestId;
       if (params != null) {
         for (const value of params) {
@@ -97,7 +91,6 @@ export class FormWebElementLoader implements IWebElementLoader {
   }
 
   private generateElementKey(pageId: string, key: string) {
-    //console.log("generateElementKey ", '[data-id='+(pageId + key).toLocaleLowerCase()+']');
     return (pageId + key).toLocaleLowerCase();
   }
 

@@ -11,14 +11,14 @@ Feature: As an automation framework I can verify element value
     @smoke
     Scenario: As a automation framework I can verify an element at index contains and does not contain the text
       Given I am on the "home" page
-          And the "1st" "contact item" contains the text "Abraham Perry"
+          And the "1st" "contact item" contains the text "Vulputate Street"
       Then the "1st" "contact item" does not contain the text "Jacques Necker"
 
     @desktop
     @smoke
     Scenario: As a automation framework I can verify an element with dynamic element data id contains and does not contain the text
       Given I am on the "home" page
-          And the "contact" for specific "item" contains the text "Abraham Perry"
+          And the "contact" for specific "item" contains the text "Vulputate Street"
       Then the "contact" for specific "item" does not contain the text "Jacques Necker"
 
     @desktop

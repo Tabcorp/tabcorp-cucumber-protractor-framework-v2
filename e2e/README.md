@@ -8,18 +8,16 @@
 
 ##### verify-element-presence
 
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" does not contain the "([^"]*)" element
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" for specific "([^"]*)" element
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" does not contain the "([^"]*)" for specific "([^"]*) element
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"
-- [ ] Then the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element
-- [ ] Then the "([^"]*)" (?:button|link|icon|element) should( not)? be present
-- [ ] Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be present
-- [ ] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be present
-- [ ] Then the "([^"]*)" element within the "([^"]*)" should( not)? be present
+- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" element
+- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" element
+- [x] hen the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
+- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
+- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)
+- [x] Then the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element
+- [x] Then the "([^"]*)" (?:button|link|icon|element) should( not)? be present
+- [x] Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be present
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be present
+- [x] Then the "([^"]*)" element within the "([^"]*)" should( not)? be present
 
 ##### verify-element-status
 
