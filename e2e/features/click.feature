@@ -87,6 +87,6 @@ Feature: As an automation framework I can click elements
 
     @desktop
     @smoke
-    Scenario: As a automation framework I can click an element that is displayed
+    Scenario: As a automation framework I can click an element at index that is displayed
       Given I am on the "home" page
         And I click the "1st" "search" button that is displayed
