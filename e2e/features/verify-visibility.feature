@@ -4,7 +4,7 @@ Feature: As an automation framework I can verify element visibility
     @smoke
     Scenario: As a automation framework I can verify the count of an element
       Given I am on the "home" page
-        And I can see "1" "add" buttons
+        And I can see "1" "add button" buttons
 
     @desktop
     @smoke
@@ -64,14 +64,14 @@ Feature: As an automation framework I can verify element visibility
     @smoke
     Scenario: As a automation framework I can verify an element should and should not be displayed
       Given I am on the "home" page
-        And the "add" element should be displayed
+        And the "add button" element should be displayed
       Then the "hidden div" element should not be displayed
 
     @desktop
     @smoke
     Scenario: As a automation framework I can verify an element at index should and should not be displayed
       Given I am on the "home" page
-         And the "1st" "add" element should be displayed
+         And the "1st" "add button" element should be displayed
       Then the "2nd" "hidden div" element should not be displayed
 
     @desktop

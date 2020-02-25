@@ -4,13 +4,13 @@ Feature: As an automation framework I can interact with the browser
     @smoke
     Scenario: As a automation framework I can mouse over an element
       Given I am on the "home" page
-          And I mouse over the "add"
+          And I mouse over the "add button"
 
     @desktop
     @smoke
     Scenario: As a automation framework I can hover over an element
       Given I am on the "home" page
-          And I hover over the "add"
+          And I hover over the "add button"
 
     @desktop
     @smoke
