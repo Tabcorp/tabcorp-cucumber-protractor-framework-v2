@@ -105,19 +105,19 @@
 
 ##### click
 
-- [ ] When I click the "([^"]*)" (?:button|link|icon|element|radio button)
-- [ ] When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button)
-- [ ] When I click the "([^"]*)" (?:button|link|icon|element|radio button) "([0-9])" times
-- [ ] When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button) "([0-9]+)" times
-- [ ] When I click the "([^"]*)" with the text "([^"]*)"
-- [ ] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
-- [ ] When I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
-- [ ] When I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)"
-- [ ] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
-- [ ] When I click the "([^"]*)" (?:button|link|icon|element) in the "([^"]*)" (?:dialog|element|form)
-- [ ] When I click the "([^"]*)" (?:button|link|icon|element|radio button) that is displayed
-- [ ] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times
-- [ ] When I click the "([^"]*)" (?:button|link|icon|element) "([^"]*)" times
+- [x] When I click the "([^"]*)" (?:button|link|icon|element|radio button)
+- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
+- [x] When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button)
+- [x] When I click the "([^"]*)" (?:button|link|icon|element|radio button) "([0-9])" times
+- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times
+- [x] When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button) "([0-9]+)" times
+- [x] When I click the "([^"]*)" with the text "([^"]*)"
+- [x] When I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- [x] When I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)"
+- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- [x] When I click the "([^"]*)" (?:button|link|icon|element) in the "([^"]*)" (?:dialog|element|form)
+- [x] When I click the "([^"]*)" (?:button|link|icon|element|radio button) that is displayed
+- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) that is displayed
 
 ##### input-dropdown
 

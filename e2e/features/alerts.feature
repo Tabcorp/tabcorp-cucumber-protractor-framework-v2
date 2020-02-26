@@ -4,7 +4,7 @@ Feature: As an automation framework I can verify alerts
     @smoke
     Scenario: As a automation framework I can accept an alert dialog
       Given I am on the "home" page
-        And I click the "add" button
+        And I click the "add button" button
       When I am directed to the "add record" page
         And I fill in the "name" input with "Lazare Carnot"
       Then I fill in the "phone" input with "+33 1 30 83 78 00"
@@ -22,7 +22,7 @@ Feature: As an automation framework I can verify alerts
     @smoke
     Scenario: As a automation framework I can dismiss an alert dialog
       Given I am on the "home" page
-        And I click the "add" button
+        And I click the "add button" button
       When I am directed to the "add record" page
         And I fill in the "name" input with "Lazare Carnot"
       Then I fill in the "phone" input with "+33 1 30 83 78 00"

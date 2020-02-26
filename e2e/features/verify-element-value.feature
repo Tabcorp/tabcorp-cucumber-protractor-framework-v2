@@ -82,7 +82,7 @@ Feature: As an automation framework I can verify element value
     @smoke
     Scenario: As a automation framework I can verify the select box option contains the text
       Given I am on the "home" page
-        And I click the "add" button
+        And I click the "add button" button
       When I am directed to the "add record" page
         And I select the "gender" as "female"
       Then the "2nd" "gender" option contains the text "Female"
@@ -91,7 +91,7 @@ Feature: As an automation framework I can verify element value
     @smoke
     Scenario: As a automation framework I can verify the last option of a select contains
       Given I am on the "home" page
-        And I click the "add" button
+        And I click the "add button" button
       When I am directed to the "add record" page
         And the last "gender" dropdown contains the text "Other"
 
@@ -99,6 +99,6 @@ Feature: As an automation framework I can verify element value
     @smoke
     Scenario: As a automation framework I can count how many options a select contains
       Given I am on the "home" page
-        And I click the "add" button
+        And I click the "add button" button
       When I am directed to the "add record" page
         And the "gender" dropdown contains a total of "3" options

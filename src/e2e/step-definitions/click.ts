@@ -13,6 +13,12 @@ When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button)$/, async 
   await htmlHelper().clickElement(element);
 });
 
+When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, async (elementPosition: string, elementName: string) => {
+  const index = parseInt(elementPosition, 10) - 1;
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
+  await htmlHelper().clickElement(element);
+});
+
 When(/^I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button)$/, async (elementName: string, selectorModifiers: string) => {
   let element: ElementFinder = null;
   const params: string[] = selectorModifiers.split(',');
@@ -28,6 +34,15 @@ When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button) "([0-9])"
   }
 });
 
+// multiple times click
+When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times$/, async (elementIndex: string, elementName: string, elementCount: number) => {
+  const index = parseInt(elementIndex, 10) - 1;
+  let element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
+  for (let j = 0; j < elementCount; j++) {
+    await htmlHelper().clickElement(element);
+  }
+});
+
 When(/^I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button) "([0-9]+)" times?$/, async (elementName: string, selectorModifiers: string, clickCount: number) => {
   let element: ElementFinder = null;
   const params: string[] = selectorModifiers.split(',');
@@ -39,12 +54,6 @@ When(/^I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|
 
 When(/^I click the "([^"]*)" with the text "([^"]*)"$/, async (elementName: string, elementText: string) => {
   const element: ElementFinder = await elementHelper().getElementByCssContainingText(elementName, elementText);
-  await htmlHelper().clickElement(element);
-});
-
-When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, async (elementPosition: string, elementName: string) => {
-  const index = parseInt(elementPosition, 10) - 1;
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
   await htmlHelper().clickElement(element);
 });
 
@@ -91,21 +100,4 @@ When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|elemen
     if(await elements[i].isDisplayed()) visibleElements.push(elements[i]);
   }
   await htmlHelper().clickElement(visibleElements[index]);
-});
-
-// multiple times click
-When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times$/, async (elementIndex: string, elementName: string, elementCount: number) => {
-  const index = parseInt(elementIndex, 10) - 1;
-  let element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
-  for (let j = 0; j < elementCount; j++) {
-    await htmlHelper().clickElement(element);
-  }
-});
-
-When(/^I click the "([^"]*)" (?:button|link|icon|element) "([^"]*)" times$/, async (elementName: string, elementCount: number) => {
-  let element: ElementFinder = await elementHelper().getElementByCss(elementName);
-  for (let j = 0; j < elementCount; j++) {
-    await htmlHelper().clickElement(element);
-    await browser.sleep(200);
-  }
 });
