@@ -149,9 +149,9 @@
 
 ##### navigation
 
-- [ ] When I navigate to the "([^"]*)" page
-- [ ] When I refresh the page
-- [ ] When I navigate to the URL "([^"]*)"
+- [x] When I navigate to the "([^"]*)" page
+- [x] When I refresh the page
+- [x] When I navigate to the URL "([^"]*)"
 
 #### script
 
