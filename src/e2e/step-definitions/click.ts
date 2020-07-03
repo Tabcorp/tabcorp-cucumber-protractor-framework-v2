@@ -4,7 +4,9 @@ import { WebElementHelper } from '../support/framework-helpers/implementations/w
 import { HtmlHelper } from '../support/framework-helpers/implementations/html-helper';
 import { RegistrationIoC } from '../IoC/registration-ioc';
 import { BASETYPES } from '../IoC/base-types';
+import { RetryHelper } from "../support/steps-helpers/retry-helper"
 
+const retryHelper = (): RetryHelper => RegistrationIoC.getContainer().get<RetryHelper>(BASETYPES.RetryHelper);
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
 
@@ -100,4 +102,46 @@ When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|elemen
     if(await elements[i].isDisplayed()) visibleElements.push(elements[i]);
   }
   await htmlHelper().clickElement(visibleElements[index]);
+});
+
+When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button) using javascript$/, async (elementName: string) => {
+ const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+ await browser.executeScript('arguments[0].click()', element);
+});
+
+When(/^the "([^"]*)" is eventually clickable$/, async (elementName: string) => {
+  var EC = browser.ExpectedConditions;
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await browser.wait(EC.elementToBeClickable(element), 5000);
+    return result;
+  });
+
+});
+
+When(/^I eventually click the "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementName: string) => {
+  var EC = browser.ExpectedConditions;
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await browser.wait(EC.presenceOf(element), 5000);
+    if (result) { element.click() }
+    return result;
+  });
+});
+
+When(/^I eventually click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementPosition: string, elementName: string) => {
+  var EC = browser.ExpectedConditions;
+  const index = parseInt(elementPosition, 10) - 1;
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await browser.wait(EC.presenceOf(element), 5000);
+    if (result) { element.click() }
+    return result;
+  });
 });
