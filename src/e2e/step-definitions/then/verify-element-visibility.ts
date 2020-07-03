@@ -1,11 +1,13 @@
 import { expect } from 'chai';
-import { ElementFinder } from 'protractor';
+import { ElementFinder, browser } from 'protractor';
 import { Then } from 'cucumber';
 import { WebElementHelper } from '../../support/framework-helpers/implementations/web-element-helper';
 import { HtmlHelper } from '../../support/framework-helpers/implementations/html-helper';
 import { RegistrationIoC } from '../../IoC/registration-ioc';
 import { BASETYPES } from '../../IoC/base-types';
+import { RetryHelper } from "../../support/steps-helpers/retry-helper"
 
+const retryHelper = (): RetryHelper => RegistrationIoC.getContainer().get<RetryHelper>(BASETYPES.RetryHelper);
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
 
@@ -95,4 +97,61 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should(
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, 0, !negate, params);
   const isDisplayed: boolean = await htmlHelper().isElementDisplayed(element);
   expect(isDisplayed).to.equal(!negate);
+});
+
+/* ---- eventually - for angular apps only ---- */
+Then(/^the "([^"]*)" element is eventually present$/, async (elementName: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await element.isPresent().should.eventually.be.true;
+    return result;
+  });
+});
+
+/* ---- eventually - for angular apps only ---- */
+Then(/^the "([^"]*)" element is eventually displayed$/, async (elementName: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await element.isDisplayed().should.eventually.be.true;
+    return result;
+  });
+});
+
+/* ---- eventually - for angular apps only ---- */
+Then(/^the "([^"]*)" element is eventually not displayed$/, async (elementName: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await element.isDisplayed().should.eventually.be.false;
+    return result;
+  });
+});
+
+/* ---- eventually - for angular apps only ---- */
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually displayed$/, async (elementIndex: string, elementName: string) => {
+  const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
+  let element = await elementHelper().getElementByCss(elementName, index);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await element.isDisplayed().should.eventually.be.true;
+    return result;
+  });
+});
+
+/* ---- eventually - for angular apps only ---- */
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually not displayed$/, async (elementIndex: string, elementName: string) => {
+  const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
+  let element = await elementHelper().getElementByCss(elementName, index);
+  return retryHelper().waitFor(async function() {
+    let result = false;
+    browser.waitForAngular();
+    result = await element.isDisplayed().should.eventually.be.false;
+    return result;
+  });
 });

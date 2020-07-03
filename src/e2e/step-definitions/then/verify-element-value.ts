@@ -1,12 +1,14 @@
 import { expect } from 'chai';
-import { ElementFinder } from 'protractor';
+import { ElementFinder, browser } from 'protractor';
 import { Then } from 'cucumber';
 import { WebElementHelper } from '../../support/framework-helpers/implementations/web-element-helper';
 import { HtmlHelper } from '../../support/framework-helpers/implementations/html-helper';
 import { StringManipulationHelper } from '../../support/steps-helpers/string-manipulation-helper';
 import { RegistrationIoC } from '../../IoC/registration-ioc';
 import { BASETYPES } from '../../IoC/base-types';
+import { RetryHelper } from "../../support/steps-helpers/retry-helper"
 
+const retryHelper = (): RetryHelper => RegistrationIoC.getContainer().get<RetryHelper>(BASETYPES.RetryHelper);
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
 const stringManipulationHelper = (): StringManipulationHelper => RegistrationIoC.getContainer().get<StringManipulationHelper>(BASETYPES.StringManipulationHelper);
@@ -129,4 +131,27 @@ Then(/^the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" o
   const options = await elementHelper().getAllElementsByTagName('option', element);
   const optionCount = options.length;
   expect(optionCount).to.equal(expectedOptionCount);
+});
+
+/* ---- eventually - for angular apps only ---- */
+Then(/^the "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  return retryHelper().waitFor(async function() {
+      let result = false;
+      browser.waitForAngular();
+      result = await htmlHelper().getElementText(element).should.eventually.contain(expectedElementText);
+      return result;
+    });
+});
+
+/* ---- eventually - for angular apps only ---- */
+Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
+  const index = parseInt(elementPosition, 10) - 1;
+  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
+  return retryHelper().waitFor(async function() {
+      let result = false;
+      browser.waitForAngular();
+      result = await htmlHelper().getElementText(element).should.eventually.contain(expectedElementText);
+      return result;
+    });
 });

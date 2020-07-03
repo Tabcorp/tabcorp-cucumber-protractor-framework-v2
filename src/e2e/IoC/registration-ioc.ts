@@ -1,5 +1,6 @@
 import { Container } from 'inversify';
 import { BASETYPES } from './base-types';
+import * as chaiAsPromised from "chai-as-promised";
 import { BrowserWait } from '../support/framework-helpers/implementations/browser-wait';
 import { HtmlHelper } from '../support/framework-helpers/implementations/html-helper';
 import { DropdownHelper } from '../support/framework-helpers/implementations/dropdown-helper';
