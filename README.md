@@ -170,6 +170,8 @@ npm run clean
 - Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - Then the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - Then the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" options
+- Then the "([^"]*)" eventually contains the text "([^"]*)" (angular only)
+- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eventually contains the text "([^"]*)" (angular only)
 
 ##### verify-visibility
 
@@ -184,6 +186,11 @@ npm run clean
 - Then the "([^"]*)" element should( not)? be displayed
 - Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed
 - Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be displayed
+- Then the "([^"]*)" element is eventually present (angular only)
+- Then the "([^"]*)" element is eventually displayed (angular only)
+- Then the "([^"]*)" element is eventually not displayed (angular only)
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually displayed (angular only)
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually not displayed (angular only)
 
 ##### alerts
 
@@ -213,6 +220,10 @@ npm run clean
 - When I click the "([^"]*)" (?:button|link|icon|element) in the "([^"]*)" (?:dialog|element|form)
 - When I click the "([^"]*)" (?:button|link|icon|element|radio button) that is displayed
 - When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) that is displayed
+- When I click the "([^"]*)" (?:button|link|icon|element|radio button) using javascript
+- When the "([^"]*)" is eventually clickable (angular only)
+- When I eventually click the "([^"]*)" (?:button|link|icon|element|radio button|check box) (angular only)
+- When I eventually click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|radio button|check box) (angular only)
 
 ##### input-dropdown
 

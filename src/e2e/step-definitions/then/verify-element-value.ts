@@ -133,6 +133,7 @@ Then(/^the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" o
   expect(optionCount).to.equal(expectedOptionCount);
 });
 
+/* ---- eventually - for angular apps only ---- */
 Then(/^the "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   return retryHelper().waitFor(async function() {
@@ -143,6 +144,7 @@ Then(/^the "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementNam
     });
 });
 
+/* ---- eventually - for angular apps only ---- */
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
   const index = parseInt(elementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);

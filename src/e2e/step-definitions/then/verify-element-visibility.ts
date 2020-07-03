@@ -99,7 +99,7 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should(
   expect(isDisplayed).to.equal(!negate);
 });
 
-/* ---- is present / should not be present ---- */
+/* ---- eventually - for angular apps only ---- */
 Then(/^the "([^"]*)" element is eventually present$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   return retryHelper().waitFor(async function() {
@@ -110,7 +110,7 @@ Then(/^the "([^"]*)" element is eventually present$/, async (elementName: string
   });
 });
 
-/* ---- is displayed / should not be displayed ---- */
+/* ---- eventually - for angular apps only ---- */
 Then(/^the "([^"]*)" element is eventually displayed$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   return retryHelper().waitFor(async function() {
@@ -121,7 +121,7 @@ Then(/^the "([^"]*)" element is eventually displayed$/, async (elementName: stri
   });
 });
 
-/* ---- is displayed / should not be displayed ---- */
+/* ---- eventually - for angular apps only ---- */
 Then(/^the "([^"]*)" element is eventually not displayed$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   return retryHelper().waitFor(async function() {
@@ -132,6 +132,7 @@ Then(/^the "([^"]*)" element is eventually not displayed$/, async (elementName: 
   });
 });
 
+/* ---- eventually - for angular apps only ---- */
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually displayed$/, async (elementIndex: string, elementName: string) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
   let element = await elementHelper().getElementByCss(elementName, index);
@@ -143,6 +144,7 @@ Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventual
   });
 });
 
+/* ---- eventually - for angular apps only ---- */
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually not displayed$/, async (elementIndex: string, elementName: string) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
   let element = await elementHelper().getElementByCss(elementName, index);

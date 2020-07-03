@@ -104,11 +104,13 @@ When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|elemen
   await htmlHelper().clickElement(visibleElements[index]);
 });
 
+/* ---- click using javascript ---- */
 When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button) using javascript$/, async (elementName: string) => {
  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
  await browser.executeScript('arguments[0].click()', element);
 });
 
+/* ---- eventually - for angular apps only ---- */
 When(/^the "([^"]*)" is eventually clickable$/, async (elementName: string) => {
   var EC = browser.ExpectedConditions;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
@@ -121,6 +123,7 @@ When(/^the "([^"]*)" is eventually clickable$/, async (elementName: string) => {
 
 });
 
+/* ---- eventually - for angular apps only ---- */
 When(/^I eventually click the "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementName: string) => {
   var EC = browser.ExpectedConditions;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
@@ -133,6 +136,7 @@ When(/^I eventually click the "([^"]*)" (?:button|link|icon|element|radio button
   });
 });
 
+/* ---- eventually - for angular apps only ---- */
 When(/^I eventually click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementPosition: string, elementName: string) => {
   var EC = browser.ExpectedConditions;
   const index = parseInt(elementPosition, 10) - 1;
