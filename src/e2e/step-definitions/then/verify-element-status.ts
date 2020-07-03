@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import * as chaiAsPromised from "chai-as-promised";
 import { ElementFinder } from 'protractor';
 import { Then } from 'cucumber';
 import { WebElementHelper } from '../../support/framework-helpers/implementations/web-element-helper';
