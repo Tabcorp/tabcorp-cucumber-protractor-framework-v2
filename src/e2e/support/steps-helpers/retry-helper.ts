@@ -20,7 +20,7 @@ export class RetryHelper {
       return callback().then(() => Promise.resolve(true), async (err) => {
         const runtime = new Date().getTime() - startDate.getTime();
         if (runtime >= timeout) {
-          Promise.resolve(false);
+          throw new Error('Not found!')
         } else {
           console.log('Retrying...');
           await sleep(wait);
