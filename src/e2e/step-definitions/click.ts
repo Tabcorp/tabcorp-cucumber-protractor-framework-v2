@@ -110,42 +110,54 @@ When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button) using jav
  await browser.executeScript('arguments[0].click()', element);
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 When(/^the "([^"]*)" is eventually clickable$/, async (elementName: string) => {
   var EC = browser.ExpectedConditions;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await browser.wait(EC.elementToBeClickable(element), 5000);
     return result;
   });
-
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 When(/^I eventually click the "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementName: string) => {
   var EC = browser.ExpectedConditions;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await browser.wait(EC.presenceOf(element), 5000);
     if (result) { element.click() }
     return result;
   });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 When(/^I eventually click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementPosition: string, elementName: string) => {
   var EC = browser.ExpectedConditions;
   const index = parseInt(elementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await browser.wait(EC.presenceOf(element), 5000);
     if (result) { element.click() }
     return result;
   });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
+

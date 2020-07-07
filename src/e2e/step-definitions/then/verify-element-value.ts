@@ -133,25 +133,44 @@ Then(/^the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" o
   expect(optionCount).to.equal(expectedOptionCount);
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  try {
   return retryHelper().waitFor(async function() {
       let result = false;
-      browser.waitForAngular();
       result = await htmlHelper().getElementText(element).should.eventually.contain(expectedElementText);
-      return result;
+      result = await element.isDisplayed().should.eventually.be.true;
+      if (result) {
+        let elementText = await htmlHelper().getElementText(element);
+        let currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+        expect(currentElementText).to.include(expectedElementText)
+      }
     });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
+  var EC = browser.ExpectedConditions;
   const index = parseInt(elementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
+  try {
   return retryHelper().waitFor(async function() {
       let result = false;
-      browser.waitForAngular();
-      result = await htmlHelper().getElementText(element).should.eventually.contain(expectedElementText);
+      result = await element.isDisplayed().should.eventually.be.true;
+      if (result) {
+        let elementText = await htmlHelper().getElementText(element);
+        let currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+        expect(currentElementText).to.include(expectedElementText)
+      }
       return result;
     });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });

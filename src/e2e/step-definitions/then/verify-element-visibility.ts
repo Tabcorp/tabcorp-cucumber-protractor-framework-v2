@@ -99,59 +99,79 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should(
   expect(isDisplayed).to.equal(!negate);
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([^"]*)" element is eventually present$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await element.isPresent().should.eventually.be.true;
     return result;
   });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([^"]*)" element is eventually displayed$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await element.isDisplayed().should.eventually.be.true;
     return result;
   });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([^"]*)" element is eventually not displayed$/, async (elementName: string) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await element.isDisplayed().should.eventually.be.false;
     return result;
   });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually displayed$/, async (elementIndex: string, elementName: string) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
   let element = await elementHelper().getElementByCss(elementName, index);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await element.isDisplayed().should.eventually.be.true;
     return result;
   });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
 
-/* ---- eventually - for angular apps only ---- */
+/* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually not displayed$/, async (elementIndex: string, elementName: string) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
   let element = await elementHelper().getElementByCss(elementName, index);
+  try {
   return retryHelper().waitFor(async function() {
     let result = false;
-    browser.waitForAngular();
     result = await element.isDisplayed().should.eventually.be.false;
     return result;
   });
+  } catch (ex) {
+    console.log('###### err:', ex);
+    throw new Error(ex)
+  }
 });
