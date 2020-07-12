@@ -1,6 +1,6 @@
 {
   "name": "tabcorp-cucumber-protractor-framework-v2",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "description": "common cucumber steps written with protractor",
   "main": "dist/index.js",
   "typings": "dist/index",

@@ -10,7 +10,7 @@ export class RetryHelper {
     this.config = config;
   }
 
-  public async waitFor(callback, {timeout = 20000, wait = 1000} = {}): Promise<boolean> {
+  public async waitFor(callback, {timeout = 40000, wait = 2000} = {}): Promise<boolean> {
     const sleep = (ms) => {
       return new Promise(resolve => setTimeout(resolve, ms));
     };
