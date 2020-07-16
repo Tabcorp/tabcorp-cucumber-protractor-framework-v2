@@ -8,7 +8,28 @@ Verify node version: `node -v`
 
 Verify npm version: `npm -v`
 
-## How to make the tabcorp cucumber protractor framework v2 working locally
+## How to use tabcorp cucumber protractor framework v2 in your project
+
+1.) Run in your project via terminal `npm i tabcorp-cucumber-protractor-framework-v2`
+
+2.) Replicate the e2e.conf.json and protractor.conf.ts inside your own e2e/config folder
+    > Found in `example_conf` folder.
+    
+3.) Create a cucumber feature with a scenario that leverages a step from the common framework
+
+4.) Add the below to your scripts within package.json
+
+` "e2e": "shx rm -rf dist && tsc && ./node_modules/protractor/bin/webdriver-manager update && ./node_modules/protractor/bin/protractor ./dist/e2e/config/protractor.conf.js" `
+
+5.) Run the scenario using `npm run e2e`
+
+6.) Install any required packages locally eg.
+
+    npm install cucumber@latest --save-dev
+    npm install protractor@latest --save-dev
+    npm install protractor-cucumber-framework@latest --save-dev
+
+## How to run the tabcorp cucumber protractor framework v2 working locally
 
 1. Clone this repository to your local machine
 
@@ -48,30 +69,9 @@ npm run clean
     npm login
     npm publish
 
-### Get your project up and running:
-
-
-1.) Install the tabcorp cucumber protractor framework v2 into your project
-
-    npm install tabcorp-cucumber-protractor-framework-v2@latest --save-dev
-
-2.) Ensure your project has the following (required for the protractor.conf.js)
-
-    npm install cucumber@latest --save-dev
-    npm install protractor@latest --save-dev
-    npm install protractor-cucumber-framework@latest --save-dev
-
-3.) Copy and paste the protractor.conf.ts and e2e.conf.json (example in example_conf) into your project and update accordingly.
-
-4.) Run your cucumber-protractor tests as usual from your project repository (note example for a typescript project)
-
-    ./node_modules/protractor/bin/protractor ./dist/config/protractor.conf.js
-    
-    
 ## Example Folder Structure
 
 ### Your Project:    
-
 
 /e2e
  * /config (contains your protractor.conf.ts and e2e.conf.json)
