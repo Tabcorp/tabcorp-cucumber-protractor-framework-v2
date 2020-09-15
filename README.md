@@ -1,4 +1,4 @@
-# Using Protractor for Web team's end to end regression tests
+# Tabcorp Common Automation Framework
 
 ## Pre-condition
 
@@ -39,6 +39,12 @@ Verify npm version: `npm -v`
     npm install
     npm run build
     ```
+
+## Sample Project
+
+You can find a sample project in `/sample_project`
+
+- Copy and Paste this into your project to get started (update paths inside e2e.conf.json)
 
 ## Scripts
 ```
