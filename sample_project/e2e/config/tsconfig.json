@@ -5,7 +5,7 @@
     "lib": ["es2017", "dom", "dom.iterable", "scripthost"],
     "moduleResolution": "node",
     "inlineSourceMap": true,
-    "declaration": true,
+    "declaration": false,
     "noImplicitAny": false,
     "outDir": "dist",
     "resolveJsonModule": true,
@@ -13,9 +13,6 @@
     "emitDecoratorMetadata": true,
     "types": ["reflect-metadata", "mocha", "chai-spies"]
   },
-  "exclude": [
-    "sample_project"
-  ],
   "filesGlob": [
     "src/**/*",
     "*.json",
