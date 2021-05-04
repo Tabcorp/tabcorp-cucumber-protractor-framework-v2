@@ -12,7 +12,7 @@ const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelp
 const momentHelper = (): MomentHelper => RegistrationIoC.getContainer().get<MomentHelper>(BASETYPES.MomentHelper);
 const dropdownHelper = (): DropdownHelper => RegistrationIoC.getContainer().get<DropdownHelper>(BASETYPES.DropdownHelper);
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the time "([^"]*)"$/, async (elementPosition, elementName, expectedElementText) => {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the time "([^"]*)"$/, async (elementPosition, elementName, expectedElementText) => {
   let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
   const element = await elementHelper().getElementByCss(elementName, index);
   const elementText = await htmlHelper().getElementText(element);
@@ -31,7 +31,7 @@ Then(/^the "([^"]*)" contains the current month and year$/, async (elementName) 
   expect(elementText).to.include(currentMonthAndYear);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the current year$/, async (elementPosition, elementName) => {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the current year$/, async (elementPosition, elementName) => {
   let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
   const element = await elementHelper().getElementByCss(elementName, index);
   const elementText = await htmlHelper().getElementText(element);

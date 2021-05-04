@@ -24,7 +24,7 @@ When(/^I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, asy
   await htmlHelper().hoverOver(elements[index]);
 });
 
-When(/^I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element$/, async (x: string, y: string, elementPosition: string, elementName: string) => {
+When(/^I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element$/, async (x: string, y: string, elementPosition: string, elementName: string) => {
   const index = parseInt(elementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
   browser.actions().mouseMove(element, { x: parseInt(x, 10), y: parseInt(y, 10) }).perform();
