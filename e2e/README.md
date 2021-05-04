@@ -8,11 +8,11 @@
 
 ##### verify-element-presence
 
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" element
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" element
-- [x] hen the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)" element
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" element
+- [x] hen the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)
 - [x] Then the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element
 - [x] Then the "([^"]*)" (?:button|link|icon|element) should( not)? be present
 - [x] Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be present
@@ -34,9 +34,9 @@
 
 ##### verify-moment
 
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the time "([^"]*)"
+- [ ] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the time "([^"]*)"
 - [ ] Then the "([^"]*)" contains the current month and year
-- [ ] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the current year
+- [ ] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the current year
 - [ ] Then the selected option in "([^"]*)" contains the current month
 - [ ] Then the selected option in "([^"]*)" contains the current year
 
@@ -63,16 +63,16 @@
 
 - [x] Then the "([^"]*)" contains no text
 - [x] Then the "([^"]*)" (does not )?contains? the "([^"]*)"
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)"
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)"
 - [x] Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the text "([^"]*)"
 - [x] Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - [x] Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute
 - [x] Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - [x] Then the "([^"]*)" (does not )?equals? the value "([^"]*)"
 - [x] Then the "([^"]*)" (does not )?contains? the value "([^"]*)"
-- [x] Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- [x] Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
+- [x] Then the "([^"]*)" element within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
+- [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - [x] Then the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - [x] Then the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" options
 
@@ -82,10 +82,10 @@
 - [x] Then I can see "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
 - [x] Then I can see (more than|at least) "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)
 - [x] Then I can see (more than|at least) "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
-- [x] Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
-- [x] Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- [x] Then I can see "(\d*)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
+- [x] Then I see the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
 - [x] Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|element|elements) displayed
-- [x] Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" displayed
+- [x] Then I can see "(\d*)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" displayed
 - [x] Then the "([^"]*)" element should( not)? be displayed
 - [x] Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed
 - [x] Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be displayed
@@ -99,37 +99,37 @@
 - [x] When I mouse over (the )?"([^"]*)"
 - [x] When I hover over (the )?"([^"]*)"
 - [x] When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
-- [x] When I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element
+- [x] When I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element
 - [x] When I scroll to the "([^"]*)" element
 - [x] When I wait "([^"]*)" seconds
 
 ##### click
 
 - [x] When I click the "([^"]*)" (?:button|link|icon|element|radio button)
-- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
+- [x] When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)
 - [x] When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button)
 - [x] When I click the "([^"]*)" (?:button|link|icon|element|radio button) "([0-9])" times
-- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times
+- [x] When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times
 - [x] When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button) "([0-9]+)" times
 - [x] When I click the "([^"]*)" with the text "([^"]*)"
-- [x] When I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- [x] When I click the "([^"]*)" (?:button|link|icon|element) within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
 - [x] When I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)"
-- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- [x] When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
 - [x] When I click the "([^"]*)" (?:button|link|icon|element) in the "([^"]*)" (?:dialog|element|form)
 - [x] When I click the "([^"]*)" (?:button|link|icon|element|radio button) that is displayed
-- [x] When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) that is displayed
+- [x] When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element) that is displayed
 
 ##### input-dropdown
 
 - [ ] When I fill in the "([^"]*)" input with "([^"]*)"
 - [ ] When I fill in the "([^"]*)" input with a random valid email address
-- [ ] When I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
-- [ ] When I fill in the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
+- [ ] When I fill in the "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)
+- [ ] When I fill in the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)
 - [ ] When I clear the field "([^"]*)"
 - [ ] When I select the option starting with "([^"]*)" from the "([^"]*)" (?:element|field|dropdown)
 - [ ] When I select the option "([^"]*)" from the "([^"]*)" (?:element|field|dropdown)
 - [ ] When I select the "([^"]*)" as "([^"]*)"
-- [ ] When the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
+- [ ] When the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
 - [ ] When the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
 - [ ] When the "([^"]*)" (?:element|dropdown) contains a total of "([^"]*)" options
 - [ ] When I fill in the "([^"]*)" input with "([^"]*)" in the "([^"]*)" form

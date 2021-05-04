@@ -29,7 +29,7 @@ Then(/^the "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementN
       : expect(currentElementText).to.include(expectedElementText);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementIndex: string, elementName: string, negate: string, expectedElementText: string) => {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the text "([^"]*)"$/, async (elementIndex: string, elementName: string, negate: string, expectedElementText: string) => {
   let index: number = parseInt(elementIndex.replace(/^\D+/g, ''), 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
   const elementText = await htmlHelper().getElementText(element);
@@ -75,7 +75,7 @@ Then(/^the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, 
       : expect(elementAttribute).to.include(attribute);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, negate: string, attributeType: string, attribute: string) => {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (elementIndex: string, elementName: string, negate: string, attributeType: string, attribute: string) => {
   const index = parseInt(elementIndex, 10) - 1;
   const element: ElementFinder =  await elementHelper().getElementByCss(elementName, index);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
@@ -100,7 +100,7 @@ Then(/^the "([^"]*)" (does not )?contains? the value "([^"]*)"$/, async (element
     : expect(elementAttribute).to.include(elementValue);
 });
 
-Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (subelement: string, parentElementIndex: string, mainElementName: string, negate: string, attributeType: string, attribute: string) => {
+Then(/^the "([^"]*)" element within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"$/, async (subelement: string, parentElementIndex: string, mainElementName: string, negate: string, attributeType: string, attribute: string) => {
   const index = parseInt(parentElementIndex, 10) - 1;
   let element = await elementHelper().getElementInElementByCss(mainElementName, subelement, 0,true,index);
   const elementAttribute = await htmlHelper().getAttribute(element, attributeType);
@@ -109,7 +109,7 @@ Then(/^the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eleme
       : expect(elementAttribute).to.include(attribute);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
   let index = parseInt(elementPosition.replace(/^\D+/g, ''), 10) - 1;
   const element = await elementHelper().getElementByCss(elementName);
   const options = await elementHelper().getAllElementsByTagName('option', element);
@@ -154,7 +154,7 @@ Then(/^the "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementNam
 });
 
 /* ---- eventually - addtional slow poll timer ---- */
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
   var EC = browser.ExpectedConditions;
   const index = parseInt(elementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);

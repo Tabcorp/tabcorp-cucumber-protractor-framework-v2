@@ -40,13 +40,13 @@ Then(/^I can see (more than|at least) "(\d+)" "([^"]*)" for specific "([^"]*)" (
    : expect(elements.length).to.be.gt(parseInt(expectedElementCount));
 });
 
-Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, async (expectedElementCount: string, subElementName: string, mainElementPosition: string, mainElementName: string) => {
+Then(/^I can see "(\d*)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, async (expectedElementCount: string, subElementName: string, mainElementPosition: string, mainElementName: string) => {
   const index = parseInt(mainElementPosition, 10) - 1;
   const elements: ElementFinder[] = await elementHelper().getAllElementsInElementByCss(mainElementName, subElementName, index);
   expect(elements.length).to.equals(parseInt(expectedElementCount));
 });
 
-Then(/^I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, async (subElementPosition: string, subElementName: string, mainElementPosition: string, mainElementName: string) => {
+Then(/^I see the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, async (subElementPosition: string, subElementName: string, mainElementPosition: string, mainElementName: string) => {
   const mainIndex = parseInt(mainElementPosition, 10) - 1;
   const subIndex = parseInt(subElementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, subIndex, true, mainIndex);
@@ -66,7 +66,7 @@ Then(/^I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|element|elements) disp
   expect(numberOfVisibleElements).to.equal(count);
 });
 
-Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" displayed$/, async (expectedElementCount, subElementName, mainElementPosition, mainElementName) => {
+Then(/^I can see "(\d*)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" displayed$/, async (expectedElementCount, subElementName, mainElementPosition, mainElementName) => {
   var numberOfVisibleElements = 0;
   const index = parseInt(mainElementPosition, 10) - 1;
   const elements = await elementHelper().getAllElementsInElementByCss(mainElementName, subElementName, index);

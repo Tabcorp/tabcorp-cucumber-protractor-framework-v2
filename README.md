@@ -109,11 +109,11 @@ npm run clean
 
 ##### verify-element-presence
 
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)" element
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" element
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" for specific "([^"]*)" element
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains "([0-9]+)" "([^"]*)" (?:element|elements)
 - Then the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element
 - Then the "([^"]*)" (?:button|link|icon|element) should( not)? be present
 - Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be present
@@ -135,9 +135,9 @@ npm run clean
 
 ##### verify-moment
 
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the time "([^"]*)"
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the time "([^"]*)"
 - Then the "([^"]*)" contains the current month and year
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the current year
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the current year
 - Then the selected option in "([^"]*)" contains the current month
 - Then the selected option in "([^"]*)" contains the current year
 
@@ -164,20 +164,20 @@ npm run clean
 
 - Then the "([^"]*)" contains no text$
 - Then the "([^"]*)" (does not )?contains? the "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)"
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)"
 - Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the text "([^"]*)"
 - Then the "([^"]*)" for specific "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute
 - Then the "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (does not )?contains? the "([^"]*)" attribute "([^"]*)"
 - Then the "([^"]*)" should equal the value "([^"]*)"
 - Then the "([^"]*)" (does not )?contains? the value "([^"]*)"
-- Then the "([^"]*)" element within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
+- Then the "([^"]*)" element within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element (does not )?contains? the "([^"]*)" attribute "([^"]*)"
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - Then the last "([^"]*)" (?:option|element|input|dropdown) contains the text "([^"]*)"
 - Then the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" options
 - Then the "([^"]*)" eventually contains the text "([^"]*)" 
-- Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" eventually contains the text "([^"]*)" 
+- Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" eventually contains the text "([^"]*)" 
 
 ##### verify-visibility
 
@@ -185,10 +185,10 @@ npm run clean
 - Then I can see "(\d*)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
 - Then I can see (more than|at least) "(\d+)" "([^"]*)" (?:buttons|links|icons|elements)
 - Then I can see (more than|at least) "(\d+)" "([^"]*)" for specific "([^"]*)" (?:buttons|links|icons|elements)
-- Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
-- Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- Then I can see "(\d*)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
+- Then I see the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
 - Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|element|elements) displayed
-- Then I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" displayed
+- Then I can see "(\d*)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" displayed
 - Then the "([^"]*)" element should( not)? be displayed
 - Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed
 - Then the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should( not)? be displayed
@@ -207,41 +207,41 @@ npm run clean
 -  When I mouse over (the )?"([^"]*)"
 -  When I hover over (the )?"([^"]*)"
 -  When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
--  When I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" element
+-  When I move the mouse "([^"]*)" to the right and "([^"]*)" down from the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element
 -  When I switch to the "(new open|1st|2nd|3rd|[0-9]+th)" tab
 -  When I wait "([^"]*)" seconds
 
 ##### click
 
 - When I click the "([^"]*)" (?:button|link|icon|element|radio button)
-- When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
+- When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)
 - When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button)
 - When I click the "([^"]*)" (?:button|link|icon|element|radio button) "([0-9])" times
-- When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times
+- When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element) "([^"]*)" times
 - When I click the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element|radio button) "([0-9]+)" times
 - When I click the "([^"]*)" with the text "([^"]*)"
-- When I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- When I click the "([^"]*)" (?:button|link|icon|element) within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
 - When I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)"
-- When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+- When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
 - When I click the "([^"]*)" (?:button|link|icon|element) in the "([^"]*)" (?:dialog|element|form)
 - When I click the "([^"]*)" (?:button|link|icon|element|radio button) that is displayed
-- When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element) that is displayed
+- When I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element) that is displayed
 - When I click the "([^"]*)" (?:button|link|icon|element|radio button) using javascript
 - When the "([^"]*)" is eventually clickable (angular only)
 - When I eventually click the "([^"]*)" (?:button|link|icon|element|radio button|check box) (angular only)
-- When I eventually click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|radio button|check box) (angular only)
+- When I eventually click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element|radio button|check box) (angular only)
 
 ##### input-dropdown
 
 -  When I fill in the "([^"]*)" input with "([^"]*)"
 -  When I fill in the "([^"]*)" input with a random valid email address
--  When I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
--  When I fill in the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
+-  When I fill in the "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)
+-  When I fill in the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)
 -  When I clear the field "([^"]*)"
 -  When I select the option starting with "([^"]*)" from the "([^"]*)" (?:element|field|dropdown)
 -  When I select the option "([^"]*)" from the "([^"]*)" (?:element|field|dropdown)
 -  When I select the "([^"]*)" as "([^"]*)"
--  When the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
+-  When the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
 -  When the last "([^"]*)" (?:option|element|input) contains the text "([^"]*)"
 -  When the "([^"]*)" (?:element|dropdown) contains a total of "([^"]*)" options
 -  When I fill in the "([^"]*)" input with "([^"]*)" in the "([^"]*)" form

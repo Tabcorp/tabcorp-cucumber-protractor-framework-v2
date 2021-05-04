@@ -24,13 +24,13 @@ When(/^I fill in the "([^"]*)" input with a random valid email address$/, async 
 });
 
 // update to make sure the field DOES NOT start with a digit (would also somehow match next step)
-When(/I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, async (subElementName: string, inputValue: string, mainElementPosition: string, mainElementName: string) => {
+When(/I fill in the "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)$/, async (subElementName: string, inputValue: string, mainElementPosition: string, mainElementName: string) => {
   const mainIndex = parseInt(mainElementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, 0, true, mainIndex);
   await htmlHelper().inputValue(element, inputValue);
 });
 
-When(/I fill in the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, async (subElementPosition: string, subElementName: string, inputValue: string, mainElementPosition: string, mainElementName: string) => {
+When(/I fill in the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)$/, async (subElementPosition: string, subElementName: string, inputValue: string, mainElementPosition: string, mainElementName: string) => {
   const subIndex = parseInt(subElementPosition, 10) - 1;
   const mainIndex = parseInt(mainElementPosition, 10) - 1;
   const element: ElementFinder = await elementHelper().getElementInElementByCss(mainElementName, subElementName, subIndex, true, mainIndex);
