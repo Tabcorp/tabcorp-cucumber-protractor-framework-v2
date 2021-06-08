@@ -133,12 +133,12 @@ Then(/^the "([^"]*)" (?:element|option|dropdown) contains a total of "([^"]*)" o
   expect(optionCount).to.equal(expectedOptionCount);
 });
 
-/* ---- eventually - addtional slow poll timer ---- */
+
 Then(/^the "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementName: string, expectedElementText: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   try {
   return retryHelper().waitFor(async function() {
       let result = false;
+      const element: ElementFinder = await elementHelper().getElementByCss(elementName);
       result = await htmlHelper().getElementText(element).should.eventually.contain(expectedElementText);
       result = await element.isDisplayed().should.eventually.be.true;
       if (result) {
@@ -157,10 +157,10 @@ Then(/^the "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementNam
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" eventually contains the text "([^"]*)"$/, async (elementPosition: string, elementName: string, expectedElementText: string) => {
   var EC = browser.ExpectedConditions;
   const index = parseInt(elementPosition, 10) - 1;
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
   try {
   return retryHelper().waitFor(async function() {
       let result = false;
+      const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
       result = await element.isDisplayed().should.eventually.be.true;
       if (result) {
         let elementText = await htmlHelper().getElementText(element);

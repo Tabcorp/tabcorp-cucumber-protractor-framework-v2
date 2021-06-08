@@ -5,9 +5,37 @@ import { WebElementHelper } from '../../support/framework-helpers/implementation
 import { RegistrationIoC } from '../../IoC/registration-ioc';
 import { BASETYPES } from '../../IoC/base-types';
 import { StringManipulationHelper } from '../../support/steps-helpers/string-manipulation-helper';
+import { RetryHelper } from "../../support/steps-helpers/retry-helper"
+import { HtmlHelper } from '../../support/framework-helpers/implementations/html-helper';
 
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const stringManipulationHelper = (): StringManipulationHelper => RegistrationIoC.getContainer().get<StringManipulationHelper>(BASETYPES.StringManipulationHelper);
+const retryHelper = (): RetryHelper => RegistrationIoC.getContainer().get<RetryHelper>(BASETYPES.RetryHelper);
+const htmlHelper = (): HtmlHelper => RegistrationIoC.getContainer().get<HtmlHelper>(BASETYPES.HtmlHelper);
+
+const retryTableHelperPromise = (elementName, cucumberRowText) => retryHelper().waitFor(async () => {
+    return retryHelper().waitFor(async function() {
+        let result = false;
+        const element: ElementFinder = await elementHelper().getElementByCss(elementName);
+        result = await htmlHelper().getElementText(element).should.eventually.contain(cucumberRowText);
+        result = await element.isDisplayed().should.eventually.be.true;
+        if (result) {
+            let elementText = await htmlHelper().getElementText(element);
+            let currentElementText = stringManipulationHelper().replaceLineBreaks(elementText);
+            console.log("currentElementText ", currentElementText)
+            console.log("CucumberRowText ", cucumberRowText)
+            expect(currentElementText).to.include(cucumberRowText)
+        }
+    });
+})
+
+Then(/^the "([^"]*)" table eventually contains the following:$/, async (elementName: string, dataTable: TableDefinition) => {
+    let rows = dataTable.raw()[0]
+    console.log(rows);
+    for(const cucumberRowText of rows) {
+        await retryTableHelperPromise(elementName, cucumberRowText)
+    }
+});
 
 Then(/^the "([^"]*)" table contains the following:$/, async (elementName: string, dataTable: TableDefinition) => {
   const element: ElementFinder = await elementHelper().getElementByCss(elementName);
