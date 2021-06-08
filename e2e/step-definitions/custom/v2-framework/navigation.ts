@@ -5,6 +5,7 @@ import * as chai from "chai";
 chai.should();
 
 import { WebElementHelper } from '../../../../src/e2e/support/framework-helpers/implementations/web-element-helper';
+import { RetryHelper } from '../../../../src/e2e/support/steps-helpers/retry-helper';
 import { BrowserWait } from '../../../../src/e2e/support/framework-helpers/implementations/browser-wait';
 import { RegistrationIoC } from '../../../../src/e2e/IoC/registration-ioc';
 import { BASETYPES } from '../../../../src/e2e/IoC/base-types';
@@ -21,6 +22,7 @@ const jurisdictionHelper = (): IJurisdictionHelper => RegistrationIoC.getContain
 const browserWait = (): BrowserWait => RegistrationIoC.getContainer().get<BrowserWait>(BASETYPES.BrowserWait);
 const elementHelper = (): WebElementHelper => RegistrationIoC.getContainer().get<WebElementHelper>(BASETYPES.WebElementHelper);
 const pageHelper = (): PageHelper => RegistrationIoC.getContainer().get<PageHelper>(BASETYPES.PageHelper);
+const retryHelper = (): RetryHelper => RegistrationIoC.getContainer().get<RetryHelper>(BASETYPES.RetryHelper);
 
 Given(/^I am on the "([^"]*)" page$/, async (pageName: string) => {
   await pageHelper().navigateToPage(pageName);
@@ -29,6 +31,13 @@ Given(/^I am on the "([^"]*)" page$/, async (pageName: string) => {
 When(/^I am directed to the "([^"]*)" page$/, async (pageName: string) => {
   const definedPageURL = await pageURLHelper().getDefinedPageURL(pageName);
   await customNavigationHelper().setCurrentPage(pageName);
+  await pageHelper().navigateToPage(pageName);
+  return retryHelper().waitFor(async () => {
+    let result = false;
+    browser.waitForAngular();
+    result = await browser.getCurrentUrl().should.eventually.contain(definedPageURL);
+    return result;
+  });
 });
 
 When(/^I am directed to the "([^"]*)" dialog$/, async (pageName: string) => {
