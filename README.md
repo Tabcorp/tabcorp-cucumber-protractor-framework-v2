@@ -151,6 +151,7 @@ npm run clean
 
 ##### verify-table
 
+- Then the "([^"]*)" table eventually contains the following
 - Then the "([^"]*)" table contains the following
 - Then the "([^"]*)" table does not contain the following
 - Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" table contains the following

@@ -113,10 +113,10 @@ When(/^I click the "([^"]*)" (?:button|link|icon|element|radio button) using jav
 /* ---- eventually - addtional slow poll timer ---- */
 When(/^the "([^"]*)" is eventually clickable$/, async (elementName: string) => {
   var EC = browser.ExpectedConditions;
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element: ElementFinder = await elementHelper().getElementByCss(elementName);
     result = await browser.wait(EC.elementToBeClickable(element), 5000);
     return result;
   });
@@ -129,10 +129,10 @@ When(/^the "([^"]*)" is eventually clickable$/, async (elementName: string) => {
 /* ---- eventually - addtional slow poll timer ---- */
 When(/^I eventually click the "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementName: string) => {
   var EC = browser.ExpectedConditions;
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element: ElementFinder = await elementHelper().getElementByCss(elementName);
     result = await browser.wait(EC.presenceOf(element), 5000);
     if (result) { element.click() }
     return result;
@@ -147,10 +147,10 @@ When(/^I eventually click the "([^"]*)" (?:button|link|icon|element|radio button
 When(/^I eventually click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element|radio button|check box)$/, async (elementPosition: string, elementName: string) => {
   var EC = browser.ExpectedConditions;
   const index = parseInt(elementPosition, 10) - 1;
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element: ElementFinder = await elementHelper().getElementByCss(elementName, index);
     result = await browser.wait(EC.presenceOf(element), 5000);
     if (result) { element.click() }
     return result;

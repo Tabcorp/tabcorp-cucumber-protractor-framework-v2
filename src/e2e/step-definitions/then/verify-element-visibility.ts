@@ -101,10 +101,10 @@ Then(/^the "([^"]*)" for specific "([^"]*)" (?:button|link|icon|element) should(
 
 /* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([^"]*)" element is eventually present$/, async (elementName: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element: ElementFinder = await elementHelper().getElementByCss(elementName);
     result = await element.isPresent().should.eventually.be.true;
     return result;
   });
@@ -116,10 +116,10 @@ Then(/^the "([^"]*)" element is eventually present$/, async (elementName: string
 
 /* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([^"]*)" element is eventually displayed$/, async (elementName: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element: ElementFinder = await elementHelper().getElementByCss(elementName);
     result = await element.isDisplayed().should.eventually.be.true;
     return result;
   });
@@ -131,10 +131,10 @@ Then(/^the "([^"]*)" element is eventually displayed$/, async (elementName: stri
 
 /* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([^"]*)" element is eventually not displayed$/, async (elementName: string) => {
-  const element: ElementFinder = await elementHelper().getElementByCss(elementName);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element: ElementFinder = await elementHelper().getElementByCss(elementName);
     result = await element.isDisplayed().should.eventually.be.false;
     return result;
   });
@@ -147,10 +147,10 @@ Then(/^the "([^"]*)" element is eventually not displayed$/, async (elementName: 
 /* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually displayed$/, async (elementIndex: string, elementName: string) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
-  let element = await elementHelper().getElementByCss(elementName, index);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element = await elementHelper().getElementByCss(elementName, index);
     result = await element.isDisplayed().should.eventually.be.true;
     return result;
   });
@@ -163,10 +163,10 @@ Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventual
 /* ---- eventually - addtional slow poll timer ---- */
 Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element is eventually not displayed$/, async (elementIndex: string, elementName: string) => {
   const index: number = parseInt(elementIndex.replace(/^\D+/g, ''),10) - 1;
-  let element = await elementHelper().getElementByCss(elementName, index);
   try {
   return retryHelper().waitFor(async function() {
     let result = false;
+    const element = await elementHelper().getElementByCss(elementName, index);
     result = await element.isDisplayed().should.eventually.be.false;
     return result;
   });
