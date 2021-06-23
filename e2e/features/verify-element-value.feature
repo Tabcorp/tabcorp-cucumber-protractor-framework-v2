@@ -56,7 +56,7 @@ Feature: As an automation framework I can verify element value
       Then the "2nd" "contact item" does not contain the "name" attribute "contact-piece"
 
     @desktop
-    @cam
+    @wip
     @smoke
     Scenario: As a automation framework I can verify an element has the exact value
       Given I am on the "home" page
