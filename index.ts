@@ -27,6 +27,7 @@ export {FileUtility} from "./src/e2e/support/framework-helpers/implementations/f
 export {RequiredConfig} from "./src/e2e/support/framework-helpers/implementations/required-config";
 export {TimeUtility} from "./src/e2e/support/framework-helpers/implementations/time-utility-helper";
 export {ScriptHelper} from "./src/e2e/support/steps-helpers/script-helper";
+export {StoredHelper} from "./src/e2e/support/steps-helpers/stored-helper";
 export {StringManipulationHelper} from "./src/e2e/support/steps-helpers/string-manipulation-helper";
 export {IPageUrlsMap} from "./src/e2e/support/framework-helpers/interfaces/page-url-interfaces";
 export {IElementDefinitionMap} from "./src/e2e/support/framework-helpers/interfaces/web-element-interfaces";
